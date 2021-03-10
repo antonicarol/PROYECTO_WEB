@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Blog title</title></head>
+<body>
+    <h1>Our post list</h1>
+    {% for post in postlist %}
+        <p>{{ post }}</p>
+    {% endfor %}
+
+    <div>
+        {{ req }}
+    </div>
+</body>
+</html>
