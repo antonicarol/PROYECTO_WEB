@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from posts.views import post_list_view
+from socialmedia.views import register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('post/', post_list_view),
+    path('register/', register)
 ]
