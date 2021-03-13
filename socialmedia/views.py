@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .utils import checkPasswordMatches, checkPasswordSecurity
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, EditProfileForm
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -27,8 +27,6 @@ def register(request):
     }
     return render(request, 'auth.html', context)
 
-
-
 def login(request):
     form = LoginForm()
 
@@ -51,6 +49,40 @@ def login(request):
     }
     return render(request, 'auth.html', context)
 
+def home(request, username):
+    user = User.objects.filter(username=username)[0]
+    
+    context = {
+       'user': {
+           'username' : user.username,
+           'email' : user.email
+       }
+    }
+    return render(request, 'home.html', context)
+     
+def edit_profile(request, username):
+
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST)
+        if form.is_valid():
+            user = User.objects.filter(username=username)
+            data = form.cleaned_data
+            user.update(username=data["username"],email=data["email"])
+            return redirect('/home/' + data["username"])
+    
+    user = User.objects.filter(username=username)
+    form = EditProfileForm(initial={
+        'username' : user[0].username,
+        'email' : user[0].email
+    })
+
+    context = {
+       'form' : form,
+       'user' : user
+    }
+
+    return render(request, 'editProfile.html', context)
+         
 def signUpUser(username, password, repPassword):
     user = User.objects.filter(username=username)
 
@@ -95,15 +127,7 @@ def loginUser(username, password):
 
     
 
-def home(request, username):
-    print(username)
-    context = {
-       'user': {
-           'username' : username
-       }
-    }
-    return render(request, 'home.html', context)
-     
+
 
 
 

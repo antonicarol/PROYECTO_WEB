@@ -7,6 +7,9 @@
     <h1> home </h1>
     
     {{ user.username }}
+    {{ user.email }}
+
+    <a href="/profile/{{ user.username }}/edit/">Editar perfil</a>
 
 </body>
 </html>

@@ -16,11 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from socialmedia.views import register, login, home
+from socialmedia.views import register, login, home, edit_profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register),
     path('login/', login),
-    path('home/<str:username>', home)
-]
+    path('home/<str:username>', home),
+
+
+    #region User Proile
+    path('profile/<str:username>/edit/', edit_profile)
+    #endregion 
+    
+    ]
