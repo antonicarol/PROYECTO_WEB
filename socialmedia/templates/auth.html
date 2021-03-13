@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'auth.css' %}">
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Enviar" />
+    </form>
+
+</body>
+</html>
+

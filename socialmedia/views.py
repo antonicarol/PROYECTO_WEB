@@ -1,33 +1,64 @@
-from django.shortcuts import render
-
-from .models import User
+from django.shortcuts import render, redirect
 
 from .utils import checkPasswordMatches, checkPasswordSecurity
+from .forms import RegisterForm, LoginForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 
+
 def register(request):
-    #username = request.POST["username"]
-    username = "Pepe"
-    #password = request.POST["password"]
-    #repPassword = request.POST["repPassword"]
+    form = RegisterForm()
 
-    password = "1234Antoni"
-    repPassword = "1234Antoni"
-
-    # First check if the username is already logged in
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            if(signUpUser(**form.cleaned_data)):
+                print("Something went bad!")
+                return redirect('/login/')
+            else:
+                print("User logged in!")
+                return redirect('/register/')
+               
+          
+            
     context = {
-
+       'form' : form 
     }
+    return render(request, 'auth.html', context)
 
-    user = User.objects.filter(Username=username)
+
+
+def login(request):
+    form = LoginForm()
+
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            
+            if(loginUser(**form.cleaned_data)):
+                username = form.cleaned_data["username"]
+                print("Usuario logeado")
+                return redirect('/home/' + username)
+            else:
+                print("Este usuario no existe!")
+                return redirect('/login/')
+
+                  
+          
+    context = {
+       'form' : form 
+    }
+    return render(request, 'auth.html', context)
+
+def signUpUser(username, password, repPassword):
+    user = User.objects.filter(username=username)
 
     if user.__len__() > 0:
         print("User is already created!")
     
     else:
         print("User is not created, go on!")
-
         #Check password security
         if(checkPasswordSecurity(password)):
             print("Contraseña segura!")
@@ -36,23 +67,43 @@ def register(request):
                 print("Las contraseñas son iguales!")
                 #La contraseña es igual, creamos usuario
                 
-                user = User(Username=username, Password=password)
+                user = User(username=username, password=password)
 
                 user.save()
                 
-                pass  
+                return True
             else:
                 print("Las contraseñas no son iguales!")
                 #La contraseña no es igual, porfavor vuelva!
-                pass
+                return False
         else:
             #La contraseña no es segura!
             print("Contraseña " + password + " no es segura!")
-            pass
+            return False 
 
-    return render(request, 'index.html', context)
+def loginUser(username, password):
+    user = User.objects.filter(username=username).only()
 
-def login():
-    pass
+    if(user.__len__() > 0):
+        print("User exists")
+        if(password == user[0].password):
+            return True
+        else:
+            return False
+    else:
+        return False
+
+    
+
+def home(request, username):
+    print(username)
+    context = {
+       'user': {
+           'username' : username
+       }
+    }
+    return render(request, 'home.html', context)
+     
+
 
 

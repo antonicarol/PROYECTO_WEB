@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from socialmedia.views import register
+from socialmedia.views import register, login, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', register)
+    path('register/', register),
+    path('login/', login),
+    path('home/<str:username>', home)
 ]
