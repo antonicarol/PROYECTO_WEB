@@ -13,3 +13,7 @@ class LoginForm(forms.Form):
 class EditProfileForm(forms.Form):
     username = forms.CharField(max_length=20)
     email = forms.EmailField(required=False)
+
+
+class NewPostForm(forms.Form):
+    content = forms.CharField(max_length=20)

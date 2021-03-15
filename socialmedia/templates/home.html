@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% block content %}
 
-{% load static %}
-<link rel="stylesheet" href="{% static 'auth.css' %}">
-<body>
+
     <h1> home </h1>
-    
     {{ user.username }}
-    {{ user.email }}
-
-    <a href="/profile/{{ user.username }}/edit/">Editar perfil</a>
-
+{% if next %}
+    {% if user.is_authenticated  %}
+        {{ user.username }}
+        {{ user.email }}
+        <a href="/profile/{{ user.username }}/edit/">Editar perfil</a>
+        <a href="{% url 'logout' %}">Log out</a>
+        <form method="POST" action="/addPost/">
+            {% csrf_token %}
+            {{ newPostForm }}
+            <button type="submit">Add Post</Button>
+        </form>
+        {% else %}
+        <p>Please login to see this page.</p>
+        <a href="{% url 'login' %}">Log in</a>
+        <a href="{% url 'logout' %}">Log out</a>
+    {% endif %}
+{% endif %}
 </body>
 </html>
-
+{% endblock %}

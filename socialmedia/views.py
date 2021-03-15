@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
-
-from .utils import checkPasswordMatches, checkPasswordSecurity
-from .forms import RegisterForm, LoginForm, EditProfileForm
 from django.contrib.auth.models import User
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render
+
+from .forms import EditProfileForm, LoginForm, NewPostForm, RegisterForm
+from .utils import checkPasswordMatches, checkPasswordSecurity
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -45,19 +48,22 @@ def login(request):
                   
           
     context = {
-       'form' : form 
     }
     return render(request, 'auth.html', context)
 
-def home(request, username):
-    user = User.objects.filter(username=username)[0]
-    
-    context = {
-       'user': {
-           'username' : user.username,
-           'email' : user.email
-       }
-    }
+
+@login_required
+def home(request):
+    newPostForm = NewPostForm()
+    if request.user.is_authenticated:
+        print("User is auth")
+        context = {
+        'user': {
+            'username':request.user.username,
+            'email': request.user.email
+        },
+        'newPostForm' : newPostForm
+        }
     return render(request, 'home.html', context)
      
 def edit_profile(request, username):
@@ -125,7 +131,15 @@ def loginUser(username, password):
     else:
         return False
 
-    
+def addPost(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            pass
+
+    print("Add new post")
+
+    return HttpResponseRedirect(request.path)
 
 
 
