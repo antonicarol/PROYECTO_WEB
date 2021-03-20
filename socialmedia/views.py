@@ -6,6 +6,8 @@ from .forms import EditProfileForm, LoginForm, NewPostForm, RegisterForm
 from .utils import checkPasswordMatches, checkPasswordSecurity
 
 from django.contrib.auth.decorators import login_required
+from .models import Post
+
 
 # Create your views here.
 
@@ -54,92 +56,76 @@ def login(request):
 
 @login_required
 def home(request):
-    newPostForm = NewPostForm()
+    
     if request.user.is_authenticated:
         print("User is auth")
+        newPostForm = NewPostForm()
+        posts = Post.objects.order_by('-timestamp')
         context = {
         'user': {
             'username':request.user.username,
             'email': request.user.email
         },
+        'posts': posts,
         'newPostForm' : newPostForm
         }
-    return render(request, 'home.html', context)
-     
-def edit_profile(request, username):
-
-    if request.method == 'POST':
-        form = EditProfileForm(request.POST)
-        if form.is_valid():
-            user = User.objects.filter(username=username)
-            data = form.cleaned_data
-            user.update(username=data["username"],email=data["email"])
-            return redirect('/home/' + data["username"])
-    
-    user = User.objects.filter(username=username)
-    form = EditProfileForm(initial={
-        'username' : user[0].username,
-        'email' : user[0].email
-    })
-
-    context = {
-       'form' : form,
-       'user' : user
-    }
-
-    return render(request, 'editProfile.html', context)
-         
-def signUpUser(username, password, repPassword):
-    user = User.objects.filter(username=username)
-
-    if user.__len__() > 0:
-        print("User is already created!")
-    
+        return render(request, 'home.html', context)
     else:
-        print("User is not created, go on!")
-        #Check password security
-        if(checkPasswordSecurity(password)):
-            print("Contraseña segura!")
-            #Check if password matches!
-            if(checkPasswordMatches(password, repPassword)):
-                print("Las contraseñas son iguales!")
-                #La contraseña es igual, creamos usuario
-                
-                user = User(username=username, password=password)
-
-                user.save()
-                
-                return True
-            else:
-                print("Las contraseñas no son iguales!")
-                #La contraseña no es igual, porfavor vuelva!
-                return False
+        return redirect('login')
+       
+def edit_profile(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'POST':
+            form = EditProfileForm(request.POST)
+            if form.is_valid():
+                    data = form.cleaned_data
+                    user.update(username=data["username"],email=data["email"])
+            
+                    return redirect('/home/' + data["username"])
+        
         else:
-            #La contraseña no es segura!
-            print("Contraseña " + password + " no es segura!")
-            return False 
+            form = EditProfileForm(initial={
+            'username' : user.username,
+            'email' : user.email
+            })
 
-def loginUser(username, password):
-    user = User.objects.filter(username=username).only()
-
-    if(user.__len__() > 0):
-        print("User exists")
-        if(password == user[0].password):
-            return True
-        else:
-            return False
+            context = {
+            'form' : form,
+            'user' : user
+            }
+            return render(request, 'editProfile.html', context)
+        
+       
     else:
-        return False
+        redirect('login')
 
+def userProfile(request, user):
+    if request.user.is_authenticated:
+        print(user)
+        author = User.objects.get(username=user)
+        posts = Post.objects.filter(author=author).order_by('-timestamp')
+        context = {
+            'user': user,
+            'posts' : posts
+        }
+        return render(request, 'profile.html', context)
+    else:
+        return('login')
+        
 def addPost(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        form = NewPostForm(request.POST)
         if form.is_valid():
-            pass
+            content = form.cleaned_data["content"]
+            author = request.user
+            if content != '':
+                Post.objects.create(content=content, author=author)
+            return redirect('home')  
+        else:
+            return redirect('home')      
+  
 
-    print("Add new post")
-
-    return HttpResponseRedirect(request.path)
 
 
 

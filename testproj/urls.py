@@ -16,20 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from socialmedia.views import register, login, home, edit_profile, addPost
+from socialmedia.views import register, login, home, edit_profile, addPost, userProfile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', home),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', home, name="home"),
 
 
     #region User Proile
-    path('profile/<str:username>/edit/', edit_profile),
+    path('profile/<str:user>', userProfile),
+    path('profile/edit/', edit_profile),
     #endregion 
 
-    path('addPost/', addPost),
+    path('addPost/', addPost, name="addPost"),
+
+
 
     
     ]

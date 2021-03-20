@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1> {{user.username}} Profile </h1>
+
+    <p> {{ user.email }} </p>
+
+    <h2>Recent posts from {{ user }} </h2>
+
+    {% for post in posts %}
+        <div> 
+            <h3>{{ post.content }}</h3>
+            <i> {{ post.timestamp }} </i>
+        </div>
+    {% endfor %}
+
+
+
+{% endblock %}

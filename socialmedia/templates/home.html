@@ -1,26 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-
-
     <h1> home </h1>
-    {{ user.username }}
-{% if next %}
-    {% if user.is_authenticated  %}
         {{ user.username }}
         {{ user.email }}
-        <a href="/profile/{{ user.username }}/edit/">Editar perfil</a>
+        <a href="/profile/edit/">Editar perfil</a>
         <a href="{% url 'logout' %}">Log out</a>
-        <form method="POST" action="/addPost/">
+        <form method="POST" action="{% url 'addPost' %}">
             {% csrf_token %}
             {{ newPostForm }}
-            <button type="submit">Add Post</Button>
+            <button type="submit">Add Post</button>
         </form>
-        {% else %}
-        <p>Please login to see this page.</p>
-        <a href="{% url 'login' %}">Log in</a>
-        <a href="{% url 'logout' %}">Log out</a>
-    {% endif %}
-{% endif %}
+      
+     {% for post in posts %}
+        <div> 
+            <h3>{{ post.content }}</h3>
+            <a href='profile/{{ post.author.username }}'> {{ post.author.username }} </a>
+        </div>
+    {% endfor %}
+
 </body>
 </html>
 {% endblock %}
