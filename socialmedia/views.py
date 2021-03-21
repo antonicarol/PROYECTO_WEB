@@ -6,7 +6,7 @@ from .forms import EditProfileForm, LoginForm, NewPostForm, RegisterForm
 from .utils import checkPasswordMatches, checkPasswordSecurity
 
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from .models import Post, Follow, UserProfile
 
 
 # Create your views here.
@@ -102,12 +102,17 @@ def edit_profile(request):
 
 def userProfile(request, user):
     if request.user.is_authenticated:
-        print(user)
         author = User.objects.get(username=user)
         posts = Post.objects.filter(author=author).order_by('-timestamp')
+
+        userProfile = UserProfile.objects.get(user=author)
+        
+        followers = Follow.objects.filter(to=userProfile)
+        print(followers)
         context = {
             'user': user,
-            'posts' : posts
+            'posts' : posts,
+            'followers': followers
         }
         return render(request, 'profile.html', context)
     else:
