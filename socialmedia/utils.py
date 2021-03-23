@@ -1,4 +1,6 @@
 import re
+from django.contrib.auth.models import User
+import enum
 
 def checkPasswordMatches(paswd, repPaswd):
     if(paswd == repPaswd):

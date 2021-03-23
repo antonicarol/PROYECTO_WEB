@@ -4,20 +4,14 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'auth.css' %}">
 <body>
+    <h1>Keloke</h1>
     <form method="POST">
         {% csrf_token %}
-        <div>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-          </div>
-          <div>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-          </div>
+        {{ form.as_p}}
+        <p style="color:red">{{ error_code }}  </p>
         <input type="submit" value="Enviar" />
     </form>
 
-    <a href='{% url 'register' %}'>Register</a>
 
 </body>
 </html>

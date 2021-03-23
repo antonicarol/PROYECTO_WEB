@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Edit Post</h1>
+
+<p> {{ post.content }}</p> 
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="sumbit"> Editar Post</button>
+
+    </form>
+{% endblock %}
