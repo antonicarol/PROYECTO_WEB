@@ -1,11 +1,22 @@
 {% block navbar %}
 
-<h1>I'm the navbar</h1>
-<p> Hello {{ user.username }} </p>
-<div>
-    <p>Actions</p>
-    <a href="/profile/edit/">Editar perfil</a>
-    <a href="{% url 'logout' %}">Log out</a>
+<div class="navbar">
+    <div class="navbar__logo">
+        <img src="http://lh3.googleusercontent.com/lZtUZZGCO5P0cG1DZnHq1foHLboJx_vFoe1ShX0OAQLdmPycUr6HfmD5Kw-DCX4epqU_=w300" />
+    </div>
+
+    <div class="navbar__content">
+
+    </div>
+
+    <div class="navbar__actions">
+        <img src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/30-512.png" />
+        <div class="navbar__user__actions">
+             <img class="navbar_user" src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png" />
+             <p>Welcome {{ user.username }}</p>
+        </div>
+       
+    </div>
 </div>
 
 {% endblock %}

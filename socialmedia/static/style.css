@@ -1,0 +1,119 @@
+/* #region Navbar styles */
+.navbar{
+    padding: 0px 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+   
+}
+
+.navbar__logo > img {
+    object-fit: contain;
+    height: 128px;
+}
+
+.navbar__content{
+    flex:0.72;
+    height: 100px;
+    border-radius:10px;
+    background: #00acee;
+    box-shadow: inset 5px -5px 16px #00455f,
+            inset -5px 5px 16px #00ffff;
+}
+
+.navbar__actions{
+    padding:10px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar__actions > img {
+    object-fit: contain;
+    height: 80px;
+    margin:0px 20px 0px 20px;
+}
+
+.navbar__user__actions > img {
+    object-fit: contain;
+    height: 80px;
+    margin:0px 20px 0px 20px;
+}
+
+.navbar__user__actions{
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar__user__actions > p{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+
+/* #endregion Navbar styles */
+
+/* #region PostList Styles */
+
+.posts__container{
+    border-radius: 42px;
+    background: linear-gradient(45deg, #d7dbdd81, #b5b9ba7c);
+    box-shadow:  5px -5px 11px #5e60616b,
+                -5px 5px 11px #ffffff;
+
+    position: sticky;
+    left:0;
+    width: 45%;
+   
+}
+
+.posts__title{
+    padding:3px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+}
+
+.posts__title > h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.posts__list{
+    padding:10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height:500px;
+    overflow: scroll;
+}
+.posts__list::-webkit-scrollbar {
+    display: none;
+}
+
+
+.post{
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ffffff78, #e6e6e670);
+    box-shadow:  5px -5px 4px #66666669,
+             -5px 5px 4px #66666669;
+}
+.post__header > h3{
+    padding: 5px;
+}
+
+.post__content{
+    display: flex;
+    align-items: center;
+    
+}
+
+.post__content > p{
+    margin: 0px 25px 10px 25px;
+    word-break: break-word
+}
+
+/* #endregion PostList Styles */

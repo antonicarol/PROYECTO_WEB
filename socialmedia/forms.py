@@ -19,10 +19,10 @@ class LoginUserForm(forms.Form):
 
 
 class NewPostForm(forms.Form):
-    content = forms.CharField(max_length=20)
+    content = forms.CharField(max_length=120)
 
 class EditPostForm(forms.Form):
-    content = forms.CharField(max_length=20)
+    content = forms.CharField(max_length=120)
 
 class FollowUserForm(forms.Form):
     username = forms.CharField(widget=forms.HiddenInput(),max_length=20)

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1> home </h1>
-    
+
     {% include 'navbar.html' %}
 
         <form method="POST" action="{% url 'addPost' %}">
@@ -10,12 +9,7 @@
             <button type="submit">Add Post</button>
         </form>
       
-     {% for post in posts %}
-        <div> 
-            <h3>{{ post.content }}</h3>
-            <a href='profile/{{ post.author.username }}'> {{ post.author.username }} </a>
-        </div>
-    {% endfor %}
+    {% include 'posts_list.html' %}
 
 </body>
 </html>

@@ -7,7 +7,7 @@
     <h1>Keloke</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p}}
+        {{ form.as_p }}
         <p style="color:red">{{ error_code }}  </p>
         <input type="submit" value="Enviar" />
     </form>

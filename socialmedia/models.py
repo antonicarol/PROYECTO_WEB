@@ -5,7 +5,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class Post(models.Model):
     id = models.IntegerField(primary_key=True, auto_created=True)
-    content = models.CharField(max_length=20)
+    content = models.CharField(max_length=120)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True, blank=True)
 
