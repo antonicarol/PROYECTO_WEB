@@ -51,6 +51,8 @@ def register(request):
 
             user.save()
 
+            UserProfile.objects.create(user=user, profileUsername= username)
+
             return redirect('login')
 
            
@@ -103,15 +105,19 @@ def edit_profile(request):
             form = EditProfileForm(request.POST)
             if form.is_valid():
                     data = form.cleaned_data
-                    user.update(username=data["username"],email=data["email"])
-            
-                    return redirect('/home/' + data["username"])
+                    UserProfile.objects.filter(user= user).update( email=data["email"], firstname= data["first_name"], lastname= data["last_name"])
+
+                    return redirect('home')
         
         else:
-            form = EditProfileForm(initial={
-            'username' : user.username,
-            'email' : user.email
-            })
+            userProfile = UserProfile.objects.get(user= user)
+            form = EditProfileForm(
+                initial= {
+                    "email" : userProfile.email,
+                    "first_name" : userProfile.firstname,
+                    "last_name" : userProfile.lastname
+                }
+            )
 
             context = {
             'form' : form,
