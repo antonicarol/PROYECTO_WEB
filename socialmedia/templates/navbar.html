@@ -1,0 +1,11 @@
+{% block navbar %}
+
+<h1>I'm the navbar</h1>
+<p> Hello {{ user.username }} </p>
+<div>
+    <p>Actions</p>
+    <a href="/profile/edit/">Editar perfil</a>
+    <a href="{% url 'logout' %}">Log out</a>
+</div>
+
+{% endblock %}

@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
     <h1> home </h1>
-        {{ user.username }}
-        {{ user.email }}
-        <a href="/profile/edit/">Editar perfil</a>
-        <a href="{% url 'logout' %}">Log out</a>
+    
+    {% include 'navbar.html' %}
+
         <form method="POST" action="{% url 'addPost' %}">
             {% csrf_token %}
             {{ newPostForm }}
