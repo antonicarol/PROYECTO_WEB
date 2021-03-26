@@ -2,6 +2,7 @@
 
 - Heroku publish
 
+-PROBLEMA AMB EL LOGIN, no mostra la interficie
 
 
 login

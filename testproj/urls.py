@@ -21,6 +21,7 @@ from socialmedia.views import register, login, home, edit_profile, addPost, user
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register),
+    path('login/', login),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', home, name="home"),

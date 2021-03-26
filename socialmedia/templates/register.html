@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html id="background">
+<div class="container">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style_register.css' %}">
+    <body>
+        <h1>Keloke</h1>
+        <img class="navbar_user" src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png" />
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p style="color:red">{{ error_code }}  </p>
+            
+            <input type="submit" id="btnenviar" value="Enviar" />
+        </form>
 
-{% load static %}
-<link rel="stylesheet" href="{% static 'auth.css' %}">
-<body>
-    <h1>Keloke</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <p style="color:red">{{ error_code }}  </p>
-        <input type="submit" value="Enviar" />
-    </form>
 
-
-</body>
+    </body>
+</div>
 </html>
 
