@@ -29,7 +29,7 @@ def register(request):
             user = User.objects.filter(username=username)
             if(user.__len__() > 0):
                 context["error_code"] = "Usuario ya existe como " + username
-                return render(request, 'auth.html', context)
+                return render(request, 'register.html', context)
             
             #Check if password is secure
             password = userData["password"]
@@ -39,12 +39,12 @@ def register(request):
             if not checkPasswordSecurity(password):
                 print("not secure")
                 context["error_code"] = "Constraseña no segura, debe incluir MAYUS, minus y digito"
-                return render(request, 'auth.html', context)
+                return render(request, 'register.html', context)
 
             
             if(password != repeatPassword):
                 context["error_code"] = "Las contraseñas no coinciden!"
-                return render(request, 'auth.html', context)
+                return render(request, 'register.html', context)
             
             # If all is ok we'll save the user
             user = User.objects.create_user(username=username, password=password)
@@ -56,7 +56,7 @@ def register(request):
             return redirect('login')
 
            
-    return render(request, 'register', context)
+    return render(request, 'register.html', context)
 
 def login(request):
     form = LoginForm()
