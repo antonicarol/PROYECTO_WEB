@@ -4,9 +4,13 @@
   padding-left: 30%;
   padding-right: 30%;
   padding-top: 50px;  
-  background-color: rgb(155, 148, 148);
   background-size: 100% 100%;
   text-align: center;
+}
+
+img{
+  object-fit: contain;
+  width: 128px;
 }
 
 input[type=text], input[type=password] {
