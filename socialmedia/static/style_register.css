@@ -7,14 +7,12 @@
   background-size: 100% 100%;
   text-align: center;
 }
-
 img{
   object-fit: contain;
   width: 128px;
 }
 
 input[type=text], input[type=password] {
-  width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: 20 px black;
@@ -37,6 +35,10 @@ input[type=text]:focus, input[type=password]:focus {
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+}
+
+.input__container > label{
+  font-size: 100px;
 }
 
 

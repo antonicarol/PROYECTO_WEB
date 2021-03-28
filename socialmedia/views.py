@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Post, Follow, UserProfile
 
 from datetime import datetime
+from django.db.models import Q
 
 # Create your views here.
 
@@ -51,7 +52,7 @@ def register(request):
 
             user.save()
 
-            UserProfile.objects.create(user=user, profileUsername= username)
+            UserProfile.objects.create(user=user, profileUsername=username)
 
             return redirect('login')
 
@@ -86,13 +87,14 @@ def home(request):
         print("User is auth")
         newPostForm = NewPostForm()
         posts = Post.objects.order_by('-timestamp')
+        usersProfiles = UserProfile.objects.all()
         context = {
         'user': {
             'username':request.user.username,
-            'email': request.user.email
         },
         'posts': posts,
-        'newPostForm' : newPostForm
+        'newPostForm' : newPostForm,
+        'users':usersProfiles
         }
         return render(request, 'home.html', context)
     else:
@@ -161,7 +163,8 @@ def userProfile(request, user):
         followForm = FollowUserForm(
             initial={
                 'username': user,
-                'action' : canFollow
+                'action' : canFollow,
+                'origin' : 'profile'
             }
         )
         context = {
@@ -239,6 +242,7 @@ def follow_user(request):
             print(request.POST)
             username = request.POST["username"]
             action = int(request.POST["action"])
+            origin = request.POST["origin"]
             if(username is not None):
                 loggedUser = request.user
                 userProfile = UserProfile.objects.get(profileUsername=username)
@@ -249,8 +253,12 @@ def follow_user(request):
                 elif action == 0:
                     #Unfollow
                     Follow.objects.filter(follower=loggedUser, to=userProfile).delete()
-
-        return redirect('profile', username) 
+                
+                if(origin == "home"):
+                    return redirect('home')
+                elif(origin == "profile"):
+                    return redirect('profile', username)
+        
 
   
 

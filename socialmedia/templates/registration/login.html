@@ -1,24 +1,26 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base_auth.html' %}
 
-{% load static %}
-<link rel="stylesheet" href="{% static 'style.css' %}">
+{% block content %}
 
-<body>
-  <h1>KELOKE LOGIN</h1>
+  <div class="register__header">
+            <h1>Tweeter</h1>
+            <img class="navbar_user" src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png" />
+  </div>
+  <div class="login__form">
     <form method="POST">
         {% csrf_token %}
-        <div>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
+         <div class='input__container'>
+            <label for="id_new_user_form-username">Nombre de usuario</label>
+            {{ form.username }}
           </div>
-          <div>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
+          <div class='input__container'>
+            <label for="id_new_user_form-username">Contaseña</label>
+            {{ form.password }}
           </div>
-        <input type="submit" value="Enviar" />
+        <input type="submit" value="Login" />
+        <p>No tienes una cuenta creada?<a href='{% url 'register' %}'> Registrate</a></p>
     </form>
 
-</body>
-</html>
+
+{% endblock %}
 

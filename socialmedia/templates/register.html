@@ -1,21 +1,33 @@
-<!DOCTYPE html>
-<html id="background">
-<div class="container">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style_register.css' %}">
-    <body>
-        <h1>Keloke</h1>
-        <img class="navbar_user" src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png" />
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <p style="color:red">{{ error_code }}  </p>
-            
-            <input type="submit" id="btnenviar" value="Enviar" />
-        </form>
+{% extends 'base_auth.html' %}
 
+{% block content %}
 
-    </body>
-</div>
-</html>
+        <div class="register__header">
+            <h1>Tweeter</h1>
+            <img class="navbar_user" src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png" />
+        </div>
+        <div class="register__form">
+            <form method="POST">
+                {% csrf_token %}
+                <div class='input__container'>
+                    <label for="id_new_user_form-username">Nombre de usuario</label>
+                    {{ form.username }}
+                </div>
+                <div class='input__container'>
+                    <label for="id_new_user_form-username">Contaseña</label>
+                    {{ form.password }}
+                </div>
+                <div class='input__container'>
+                    <label for="id_new_user_form-username">Introduce nuevamente la contraseña</label>
+                    {{ form.repeatPassword }}
+                </div>
+                
+                <p style="color:red">{{ error_code }}  </p>
+                
+                <input type="submit" id="btnenviar" value="Register" />
+            </form>
+            <p>Ya tienes una cuenta creada? <a href='{% url 'login' %}'> Inicia Sesión </a></p>
+        </div>
+
+{% endblock %}
 

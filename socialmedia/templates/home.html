@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% include 'navbar.html' %}
+    {% include './home/navbar.html' %}
 
-        <form method="POST" action="{% url 'addPost' %}">
-            {% csrf_token %}
-            {{ newPostForm }}
-            <button type="submit">Add Post</button>
-        </form>
-      
-    {% include 'posts_list.html' %}
+    {% include './home/posts_list.html' %}
+
+    {% include './home/users_list.html' %}
+
+    {% include './home/new_post_form.html'%}
 
 </body>
 </html>

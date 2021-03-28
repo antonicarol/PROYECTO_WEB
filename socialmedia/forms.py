@@ -19,7 +19,12 @@ class LoginUserForm(forms.Form):
 
 
 class NewPostForm(forms.Form):
-    content = forms.CharField(max_length=120)
+    content = forms.CharField(
+        max_length=120,
+        widget=forms.Textarea(attrs={
+            'rows':3,
+            'columns':300
+        }))
 
 class EditPostForm(forms.Form):
     content = forms.CharField(max_length=120)
@@ -27,3 +32,4 @@ class EditPostForm(forms.Form):
 class FollowUserForm(forms.Form):
     username = forms.CharField(widget=forms.HiddenInput(),max_length=20)
     action = forms.IntegerField(widget=forms.HiddenInput())
+    origin = forms.CharField(widget=forms.HiddenInput(), max_length=20)
