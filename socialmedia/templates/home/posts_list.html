@@ -1,23 +1,28 @@
 {% block posts_lists %}
 
 <div class="posts__container">
-    <div class="posts__title">
-        <h1> Recent Posts </h1>
-    </div>
+  <div class="posts__title">
+    <h1>Recent Posts</h1>
+  </div>
 
-    <div class="posts__list">
-    {% for post in posts%}
-        <div class="post">
-            <div class="post__header">
-                <h3>@ {{ post.author}}</h4>
-            </div>
-            <div class="post__content">
-                <p> {{ post.content }} </p>
-            </div>
+  <div class="posts__list">
+    {% for post in posts %}
+    <div class="post">
+      <div class="post__user">
+        <img
+          src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png"
+        />
+        <h3>@ {{ post.author}}</h3>
+      </div>
+
+      <div class="post__content">
+        <p class="post__text">{{ post.content }}</p>
+        <div class="post__timestamp">
+          <p>{{ post.timestamp }}</p>
         </div>
-    {% endfor %}
-        
+      </div>
     </div>
-
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

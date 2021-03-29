@@ -1,180 +1,192 @@
 /* #region Navbar styles */
-.navbar{
-    padding: 0px 10px 10px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-   
+.navbar {
+  padding: 0px 10px 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .navbar__logo > img {
-    object-fit: contain;
-    height: 128px;
+  object-fit: contain;
+  height: 128px;
 }
 
-.navbar__content{
-    flex:0.72;
-    height: 100px;
-    border-radius:10px;
-    background: #00acee;
-    box-shadow: inset 5px -5px 16px #00455f,
-            inset -5px 5px 16px #00ffff;
+.navbar__content {
+  flex: 0.72;
+  height: 100px;
+  border-radius: 10px;
+  background: #00acee;
+  box-shadow: inset 5px -5px 16px #00455f, inset -5px 5px 16px #00ffff;
 }
 
-.navbar__actions{
-    padding:10px;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar__actions {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar__actions > img {
-    object-fit: contain;
-    height: 80px;
-    margin:0px 20px 0px 20px;
+  object-fit: contain;
+  height: 80px;
+  margin: 0px 20px 0px 20px;
 }
 
 .navbar__user__actions > img {
-    object-fit: contain;
-    height: 80px;
-    margin:0px 20px 0px 20px;
+  object-fit: contain;
+  height: 80px;
+  margin: 0px 20px 0px 20px;
 }
 
-.navbar__user__actions{
-    display: flex;
-    flex-direction: column;
+.navbar__user__actions {
+  display: flex;
+  flex-direction: column;
 }
 
-.navbar__user__actions > p{
-    display: flex;
-    flex-direction: column;
-    font-size: 1.2rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.navbar__user__actions > p {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-
-
-
 
 /* #endregion Navbar styles */
 
 /* #region PostList Styles */
 
-.posts__container{
-    border-radius: 42px;
-    background: linear-gradient(45deg, #d7dbdd81, #b5b9ba7c);
-    box-shadow:  5px -5px 11px #5e60616b,
-                -5px 5px 11px #ffffff;
+.posts__container {
+  border-radius: 42px;
+  background: linear-gradient(45deg, #d7dbdd81, #b5b9ba7c);
+  box-shadow: 5px -5px 11px #5e60616b, -5px 5px 11px #ffffff;
 
-    position: sticky;
-    left:0;
-    width: 45%;
-   
+  position: sticky;
+  left: 0;
+  width: 45%;
 }
 
-.posts__title{
-    padding:3px;
-    text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+.posts__title {
+  padding: 3px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.144);
 }
 
-.posts__title > h1{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.posts__title > h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.posts__list{
-    padding:10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    height:500px;
-    overflow: scroll;
+.posts__list {
+  padding: 10px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  height: 500px;
+  overflow: scroll;
 }
 .posts__list::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-
-.post{
-    border-radius: 10px;
-    background: linear-gradient(45deg, #ffffff78, #e6e6e670);
-    box-shadow:  5px -5px 4px #66666669,
-             -5px 5px 4px #66666669;
+.post {
+  border-radius: 10px;
+  background: linear-gradient(45deg, #ffffff78, #e6e6e670);
+  box-shadow: 5px -5px 4px #66666669, -5px 5px 4px #66666669;
+  display: flex;
+  margin-bottom: 10px;
 }
-.post__header > h3{
-    padding: 5px;
+.post__user {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-right: 1px solid black;
+  background: linear-gradient(45deg, #47464628, #e6e6e6);
+}
+.post__user img {
+  object-fit: contain;
+  width: 64px;
 }
 
-.post__content{
-    display: flex;
-    align-items: center;
-    
+.post__header > h3 {
+  padding: 5px;
 }
 
-.post__content > p{
-    margin: 0px 25px 10px 25px;
-    word-break: break-word
+.post__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0.8;
+}
+
+.post__timestamp {
+  color: gray;
+  float: left;
+  margin-left: 10px;
+}
+
+.post__content > .post__text {
+  margin: 10px 25px 10px 25px;
+  word-break: break-word;
+  font-size: large;
 }
 
 /* #endregion PostList Styles */
 
 /* #region NewPost Styles */
 
-.new__post__container{
-    position: fixed;
-    bottom: 0px;
-    left: 30%;
-    right: 30%;
-    width: 50%;
-    border:1px solid black;
+.new__post__container {
+  position: fixed;
+  bottom: 0px;
+  left: 30%;
+  right: 30%;
+  width: 50%;
+  border: 1px solid black;
 }
 
-.new__post__container > h2{
-    text-align: center;
+.new__post__container > h2 {
+  text-align: center;
 }
-.input__container__post{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.input__container__post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.input__container__post > textarea{
-    width:80%;
-    margin-bottom: 10px;
+.input__container__post > textarea {
+  width: 80%;
+  margin-bottom: 10px;
 }
 
 /* #endregion NewPost Styles */
 
 /* #region UsersList Styles */
 
-.users__list{
-    border:1px solid black;
-    position: fixed;
-    right: 0px;
-    top:30%;
-    bottom:30%;
-    width: 20%;
+.users__list {
+  border: 1px solid black;
+  position: fixed;
+  right: 0px;
+  top: 30%;
+  bottom: 30%;
+  width: 20%;
 }
 
-.user__item{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    border: 1px solid blue;
+.user__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  border: 1px solid blue;
 }
 
-.user__item >img{
-    object-fit: contain;
-    width: 64px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
+.user__item > img {
+  object-fit: contain;
+  width: 64px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
 }
-
-
-
-
 
 /* #region UsersList Styles */
