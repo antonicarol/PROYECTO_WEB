@@ -3,9 +3,15 @@
   <head>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}" />
+
+    {% load static %}
+    <script src="{% static "jQuery.js" %}"></script>
+    
   </head>
 
   <body>
     {% block content %} {% endblock %}
+
+    
   </body>
 </html>

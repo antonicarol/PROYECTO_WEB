@@ -99,7 +99,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 5px;
   border-right: 1px solid black;
   background: linear-gradient(45deg, #47464628, #e6e6e6);
@@ -107,10 +107,20 @@
 .post__user img {
   object-fit: contain;
   width: 64px;
+  transition: transform 200ms ease-in;
+  cursor: pointer;
+}
+.post__user h3 {
+  cursor: pointer;
+  transition: transform 200ms ease-in;
 }
 
-.post__header > h3 {
-  padding: 5px;
+.post__user:hover > img {
+  transform: scale(1.2);
+}
+
+.post__user:hover > h3 {
+  transform: scale(1.2);
 }
 
 .post__content {
@@ -123,7 +133,7 @@
 .post__timestamp {
   color: gray;
   float: left;
-  margin-left: 10px;
+  margin-left: 25px;
 }
 
 .post__content > .post__text {
