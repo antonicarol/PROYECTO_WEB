@@ -78,7 +78,7 @@ def login(request):
           
     context = {
     }
-    return render(request, 'auth.html', context)
+    return render(request, 'login.html', context)
 
 
 @login_required
