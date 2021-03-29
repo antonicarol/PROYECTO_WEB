@@ -1,0 +1,55 @@
+{% block sidebar %}
+
+<div class="sidebar">
+  <div class="sidebar__user">
+    <div class="sidebar__user__image">
+      <img
+        id="#user__profile__image"
+        src="https://lh3.googleusercontent.com/proxy/j-ZyDeJsc4Afm-8BDAYSjUmBGlWDeuQ0rihpYxpg59kNZBMji8cFnVN3SVikG6sk8YrN7zbHP6LvYsAk6qxjJBCdY76xxBLnykwslFnVSZkvDpNXr5VXWd81esarpGwy1A"
+      />
+    </div>
+    <div class="sidebar__user__details">
+      <h1>@ {{ user.username }}</h1>
+    </div>
+  </div>
+
+  <div class="sidebar__menu">
+    <div id="#home" class="sidebar__menu__option">
+      <span class="iconify" data-icon="fa:home"></span>
+      <h3>Home</h3>
+    </div>
+    <div id="#profile" class="sidebar__menu__option" id="#home">
+      <span class="iconify" data-icon="vs:profile" data-inline="false"></span>
+      <h3>Perfil</h3>
+    </div>
+    <div id="#posts" class="sidebar__menu__option">
+      <span
+        class="iconify"
+        data-icon="clarity:note-edit-solid"
+        data-inline="false"
+      ></span>
+      <h3>Tus Tweets</h3>
+    </div>
+    <div id="#followers" class="sidebar__menu__option">
+      <span
+        class="iconify"
+        data-icon="ri:user-follow-fill"
+        data-inline="false"
+      ></span>
+      <h3>Seguidores</h3>
+    </div>
+  </div>
+
+  <div class="sidebar__logout">
+    <span
+      class="iconify"
+      data-icon="ri:logout-box-fill"
+      data-inline="false"
+    ></span>
+    <h3>Logout</h3>
+  </div>
+
+  <script type="text/javascript"></script>
+</div>
+
+{% endblock %}

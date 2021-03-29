@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <div class="bg">
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}" />
 
     {% load static %}
-    <script src="{% static "jQuery.js" %}"></script>
+    <link rel="stylesheet" href="{% static 'style_register.css' %}">
+
+    {% load static %}
+    <script src="{% static "js/jQuery.js" %}"></script>
+
+    {% load static %}
+    <script src="{% static "js/iconify.js" %}"></script>
+
+  
     
   </head>
 
   <body>
     {% block content %} {% endblock %}
 
-    
+  </div>
   </body>
 </html>

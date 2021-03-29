@@ -28,15 +28,13 @@ urlpatterns = [
 
     # region User Proile
     path('profile/<str:user>', userProfile, name="profile"),
-    path('profile/edit/', edit_profile),
+    path('profile/edit/', edit_profile, name="editProfile"),
     path('followUser/', follow_user, name="followUser"),
     # endregion
 
     path('addPost/', addPost, name="addPost"),
     path('editPost/<int:post_id>', editPost, name="editPost"),
     path('deletePost/<int:post_id>', deletePost, name="deletePost")
-
-
 
 
 ]
