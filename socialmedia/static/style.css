@@ -63,13 +63,14 @@ html {
   justify-content: center;
   align-items: center;
 }
+
 /* #endregion Login */
 
 /* #region Register */
 .register__container {
   position: relative;
-  background-color: rgba(189, 189, 189, 0.301);
-  width: 100%;
+  background-color: rgba(238, 237, 237, 0.301);
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -195,5 +196,9 @@ html {
 }
 
 /* #endregion Sidebar */
+
+/* #region Suggestions */
+
+/* #endregion Suggestions */
 
 /* #endregion Home */

@@ -10,21 +10,21 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class='input__container'>
-                    <label for="id_new_user_form-username">Username</label>
+                    <label for="id_new_user_form-username">Nombre de Usuario</label>
                     {{ form.username }}
                 </div>
                 <div class='input__container'>
-                    <label for="id_new_user_form-username">Password</label>
+                    <label for="id_new_user_form-username">Contraseña</label>
                     {{ form.password }}
                 </div>
                 <div class='input__container'>
-                    <label for="id_new_user_form-username">Repeat Pasword</label>
+                    <label for="id_new_user_form-username">Repite la Contraseña</label>
                     {{ form.repeatPassword }}
                 </div>
                 
                 <p style="color:red">{{ error_code }}  </p>
                 <div class="login__form__submit">
-                    <input type="submit" class="btnenviar" value="Register" />
+                    <input type="submit" class="login__submit" value="Registrarse" />
                 </div>
 
             </form>
