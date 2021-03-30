@@ -2,34 +2,36 @@
 
 {% block content %}
     <div class= "register__container">
-        <div class="register__header">
-            <h1>Tweeter</h1>
-            <img class="navbar_user" src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png" />
-        </div>
-        <div class="register__form">
-            <form method="POST">
-                {% csrf_token %}
-                <div class='input__container'>
-                    <label for="id_new_user_form-username">Nombre de Usuario</label>
-                    {{ form.username }}
-                </div>
-                <div class='input__container'>
-                    <label for="id_new_user_form-username">Contraseña</label>
-                    {{ form.password }}
-                </div>
-                <div class='input__container'>
-                    <label for="id_new_user_form-username">Repite la Contraseña</label>
-                    {{ form.repeatPassword }}
-                </div>
-                
-                <p style="color:red">{{ error_code }}  </p>
-                <div class="login__form__submit">
-                    <input type="submit" class="login__submit" value="Registrarse" />
-                </div>
+        <div class= "register_parche">
+            <div class="register__header">
+                <h1>Tweeter</h1>
+                <img class="navbar_user" src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png" />
+            </div>
+            <div class="register__form">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class='input__container'>
+                        <label for="id_new_user_form-username">Nombre de Usuario</label>
+                        {{ form.username }}
+                    </div>
+                    <div class='input__container'>
+                        <label for="id_new_user_form-username">Contraseña</label>
+                        {{ form.password }}
+                    </div>
+                    <div class='input__container'>
+                        <label for="id_new_user_form-username">Repite la Contraseña</label>
+                        {{ form.repeatPassword }}
+                    </div>
+                    
+                    <p style="color:red">{{ error_code }}  </p>
+                    <div class="login__form__submit">
+                        <input type="submit" class="register_submit" value="Registrarse" />
+                    </div>
 
-            </form>
-            <div class="login__form__switch">
-                <p>Ya tienes una cuenta creada? <a href='{% url 'login' %}'> Inicia Sesión </a> </p>
+                </form>
+                <div class="login__form__switch">
+                    <p>Ya tienes una cuenta creada? <a href='{% url 'login' %}'> Inicia Sesión </a> </p>
+                </div>
             </div>
         </div>
     </div>
