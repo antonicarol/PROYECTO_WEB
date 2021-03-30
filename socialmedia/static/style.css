@@ -69,8 +69,8 @@ html {
 /* #region Register */
 .register__container {
   position: relative;
-  background-color: rgba(238, 237, 237, 0.301);
-  width: 20%;
+  background-color: rgba(189, 189, 189, 0.301);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,11 +124,19 @@ html {
 .posting {
   flex: 0.5;
   background-color: rgba(252, 252, 252, 0.301);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .suggestions {
   flex: 0.3;
   background-color: rgba(189, 189, 189, 0.301);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 /* #region Sidebar */
@@ -199,6 +207,131 @@ html {
 
 /* #region Suggestions */
 
+.suggestions__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.suggestions__follow {
+  display: flex;
+  flex-direction: column;
+  flex: 0.8;
+}
+
+.suggestions__follow__title {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  flex: 0.2;
+}
+
+.suggestions__follow__users {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.suggestion__follow__user__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  width: 80%;
+}
+
+.suggestion__follow__user__image > img {
+  object-fit: contain;
+  border-radius: 10%;
+  width: 64px;
+}
+
+.suggestion__follow__user__info {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+}
+.suggestion__follow__user__info > h3 {
+  font-size: 1.8rem;
+}
+.suggestion__follow__user__info > h5 {
+  font-size: 1.2rem;
+  color: gray;
+}
+
 /* #endregion Suggestions */
+
+/* #region Posts */
+.posting__title {
+  border-bottom: 1px solid black;
+}
+
+.posting__newPost {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.posting__newPost__user {
+  display: flex;
+  flex-direction: column;
+}
+
+.posting__newPost__user__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.posting__newPost__user__image > img {
+  object-fit: contain;
+  width: 84px;
+}
+
+.posting__newPost__content {
+  display: flex;
+}
+
+.posting__newPost__content > textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  resize: none;
+  width: 100%;
+}
+
+.posting__newPost__content > button {
+}
+
+.posting__postsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.posting__post {
+  background-color: rgba(189, 189, 189, 0.301);
+}
+
+.posting__post__user {
+  display: flex;
+  flex-shrink: row;
+}
+
+.posting__post__user__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.posting__post__user__image > img {
+  object-fit: contain;
+  widows: 64px;
+}
+/* #endregion Posts */
 
 /* #endregion Home */
