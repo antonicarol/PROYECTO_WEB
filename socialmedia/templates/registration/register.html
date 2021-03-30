@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <div class= "container">
+    <div class= "register__container">
         <div class="register__header">
             <h1>Tweeter</h1>
             <img class="navbar_user" src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png" />
@@ -24,10 +23,14 @@
                 </div>
                 
                 <p style="color:red">{{ error_code }}  </p>
-                
-                <input type="submit" class="btnenviar" value="Register" />
+                <div class="login__form__submit">
+                    <input type="submit" class="btnenviar" value="Register" />
+                </div>
+
             </form>
-            <p>Ya tienes una cuenta creada? <a href='{% url 'login' %}'> Inicia Sesión </a></p>
+            <div class="login__form__switch">
+                <p>Ya tienes una cuenta creada? <a href='{% url 'login' %}'> Inicia Sesión </a> </p>
+            </div>
         </div>
     </div>
 

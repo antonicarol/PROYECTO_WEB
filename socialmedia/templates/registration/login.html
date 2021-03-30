@@ -1,11 +1,14 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-<div class="cubo">
+
+<div class="login__container">
+
   <div class="login__header">
     <h1>Tweeter</h1>
     <img class="navbar_user" src="https://icons-for-free.com/iconfiles/png/512/avatar+human+male+man+men+people+person+profile+user+users-1320196163635839021.png" />
   </div>
+
   <div class="login__form">
     <form method="POST">
       {% csrf_token %}
@@ -17,12 +20,22 @@
         <label for="id_new_user_form-username">Contaseña</label>
         {{ form.password }}
       </div>
-      <input type="submit" class="btnenviar2" value="Login" />
+      <div class="login__form__submit">
+          <input type="submit" class="btnenviar2" value="Login" />
+      </div>
+      
     </form>
+    <div class="login__form__switch">
+        <p>No tienes una cuenta creada?
+          <a href='{% url 'register' %}'> Registrate </a>
+        </p> 
+    </div>
     
-    <p>No tienes una cuenta creada?<a href='{% url 'register' %}'> Registrate</a></p>
-  </div>>
+
+  </div>
+  
 </div>
+
 
 {% endblock %}
 

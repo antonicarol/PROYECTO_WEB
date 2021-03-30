@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <div class="bg">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'style_register.css' %}">
+    <link rel="stylesheet" href="{% static "style.css" %}" />
 
     {% load static %}
     <script src="{% static "js/jQuery.js" %}"></script>
@@ -19,8 +16,9 @@
   </head>
 
   <body>
-    {% block content %} {% endblock %}
-
+    <div class="app">
+      {% block content %} {% endblock %}
+    </div>
   </div>
   </body>
 </html>
