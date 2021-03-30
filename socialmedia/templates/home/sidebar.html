@@ -14,11 +14,11 @@
   </div>
 
   <div class="sidebar__menu">
-    <div id="#home" class="sidebar__menu__option">
+    <div id="#home" class="sidebar__menu__option home">
       <span class="iconify" data-icon="fa:home"></span>
       <h3>Home</h3>
     </div>
-    <div id="#profile" class="sidebar__menu__option" id="#home">
+    <div id="#profile" class="sidebar__menu__option">
       <span class="iconify" data-icon="vs:profile" data-inline="false"></span>
       <h3>Perfil</h3>
     </div>
@@ -49,7 +49,14 @@
     <h3>Logout</h3>
   </div>
 
-  <script type="text/javascript"></script>
+  <script type="text/javascript">
+    //Agafem el item del menu
+    $(document).ready(function () {
+      $(".sidebar__menu__option").click(function () {
+        window.location.replace("{% url 'home' %}");
+      });
+    });
+  </script>
 </div>
 
 {% endblock %}

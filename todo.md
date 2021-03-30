@@ -4,16 +4,36 @@
 
 -PROBLEMA AMB EL LOGIN, no mostra la interficie
 
+TO DO
 
-login
+### HOME
 
-[![Image from Gyazo](https://i.gyazo.com/3a1293b640426af4696ace6b210860ae.png)](https://gyazo.com/3a1293b640426af4696ace6b210860ae)
+Mirat el que he fet i apunta cosetes que es podrien retocar o algo que trobis a faltar...
+
+- FER LA INTERACCIÓ DEL MENÚ
+
+  - Quan es fa click et porti al lloc on toca
+
+  ! Es pot fer amb un javascript - Exemple a sidebar.js
+
+  ```javascript
+  $(document).ready(function () {
+    $(".sidebar__menu__option").click(function () {
+      window.location.replace("{% url 'home' %}");
+    });
+  });
+  ```
+
+  ---- De moment que nomes redireccioni al de veure perfil, tema veure els teus twits i seguidors ja veurem
 
 
-Register 
 
-[![Image from Gyazo](https://i.gyazo.com/b603984bba51b58be17973dcf438b3a0.png)](https://gyazo.com/b603984bba51b58be17973dcf438b3a0)
+### PERFIL
 
-home
+La meva idea es que el menú segueixi alla, pero que canvii tot el de la esquerra
 
-[![Image from Gyazo](https://i.gyazo.com/0cc3742ec93be3768a1bfaa1c0b0146c.png)](https://gyazo.com/0cc3742ec93be3768a1bfaa1c0b0146c)
+[![Image from Gyazo](https://i.gyazo.com/3afbbe9526d0ae3d39cd9cd5becab481.png)](https://gyazo.com/3afbbe9526d0ae3d39cd9cd5becab481)
+
+No se exactament com ferlo pero hauria de tenir un estil semblant al home
+
+
