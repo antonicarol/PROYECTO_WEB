@@ -21,23 +21,48 @@ html {
 
 .login__container {
   position: relative;
-  background-color: rgba(189, 189, 189, 0.301);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+.login_parche {
+  border: 1px solid black;
+  position: relative;
+  background-color: rgba(240, 233, 233, 0.925);
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30 large;
+  border-radius: 10%;
+}
+.input__container > input:focus {
+  background-color: rgb(182, 155, 155);
+}
 .login__header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+.login_submit {
+  background-color: #638cb5;
+  font-size: 20px;
+  font-family: Verdana, Helvetica;
+  color: rgb(253, 237, 237);
+  border-radius: 5%;
+  border: 2px solid black;
+  cursor: pointer;
+  height: 50px;
+  width: 150px;
+  opacity: 80%;
+}
 .login__header > img {
   width: 256px;
+  padding-bottom: 25px;
 }
 
 .input__container {
@@ -69,12 +94,35 @@ html {
 /* #region Register */
 .register__container {
   position: relative;
-  background-color: rgba(189, 189, 189, 0.301);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.register_parche {
+  border: 1px solid black;
+  position: relative;
+  background-color: rgba(240, 233, 233, 0.925);
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30 large;
+  border-radius: 10%;
+}
+.register_submit {
+  background-color: #638cb5;
+  font-size: 20px;
+  font-family: Verdana, Helvetica;
+  color: rgb(253, 237, 237);
+  border-radius: 5%;
+  border: 2px solid black;
+  cursor: pointer;
+  height: 50px;
+  width: 150px;
+  opacity: 80%;
 }
 
 .register__header {
@@ -86,13 +134,13 @@ html {
 
 .register__header > img {
   width: 256px;
+  padding-bottom: 25px;
 }
 
 .input__container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 5px;
 }
 
 .input__container > label {
@@ -305,16 +353,31 @@ html {
   width: 100%;
 }
 
-.posting__newPost__content > button {
+.posting__posts__container {
+  position: relative;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .posting__postsList {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+.posting__postsList::-webkit-scrollbar {
+  display: none;
 }
 
 .posting__post {
   background-color: rgba(189, 189, 189, 0.301);
+  margin: 10px;
+  border-radius: 10%;
 }
 
 .posting__post__user {
@@ -326,11 +389,27 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
+  border-radius: 20px;
 }
 
 .posting__post__user__image > img {
   object-fit: contain;
-  widows: 64px;
+  width: 64px;
+}
+
+.posting__post__user__username {
+  display: flex;
+  align-items: center;
+}
+
+.posting__post__user__username > p {
+  margin-left: 10px;
+  color: gray;
+}
+
+.posting__post__content {
+  margin-left: 20px;
 }
 /* #endregion Posts */
 
