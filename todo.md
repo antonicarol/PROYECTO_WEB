@@ -26,7 +26,9 @@ Mirat el que he fet i apunta cosetes que es podrien retocar o algo que trobis a 
 
   ---- De moment que nomes redireccioni al de veure perfil, tema veure els teus twits i seguidors ja veurem
 
+- Modificar plantilles perque sigui dinamiquies, objectes de BD
 
+- Modificar vista home ( views.py -> home)  perque al context afageixi els usuaris que no seguiex qui s'ha logejat
 
 ### PERFIL
 
