@@ -229,14 +229,30 @@ html {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  cursor: pointer;
 }
 .sidebar__menu__option > h3 {
   flex: 0.7;
   font-size: xx-large;
+  transition: text-decoration 200ms ease-in-out;
 }
 
 .sidebar__menu__option > svg {
   font-size: 64px;
+  transition: font-size 200ms ease-in-out;
+}
+
+.sidebar__menu__option:hover {
+  background-color: rgba(92, 89, 89, 0.24);
+  border-radius: 20%;
+}
+
+.sidebar__menu__option:hover > h3 {
+  text-decoration: underline black;
+}
+
+.sidebar__menu__option:hover > svg {
+  font-size: 72px;
 }
 
 .sidebar__logout {
@@ -245,10 +261,30 @@ html {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  transition: background-color 200ms ease-in-out;
+  cursor: pointer;
+}
+.sidebar__logout > h3 {
+  opacity: 0;
+  transition: opacity 400ms ease-in-out;
 }
 
 .sidebar__logout > svg {
   font-size: 64px;
+}
+
+.sidebar__logout:hover {
+  background-color: rgba(92, 89, 89, 0.24);
+  border-radius: 20%;
+}
+
+.sidebar__logout:hover > h3 {
+  opacity: 1;
+}
+
+.selected__option {
+  background-color: rgba(92, 89, 89, 0.24);
+  border-radius: 20%;
 }
 
 /* #endregion Sidebar */
@@ -378,11 +414,25 @@ html {
   background-color: rgba(189, 189, 189, 0.301);
   margin: 10px;
   border-radius: 10%;
+  transition: background-color 200ms ease-in-out;
+}
+
+.posting__post:hover {
+  background-color: rgba(63, 61, 61, 0.281);
 }
 
 .posting__post__user {
   display: flex;
   flex-shrink: row;
+  transition: backgroud-color 200ms ease-in-out;
+  width: max-content;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.posting__post__user:hover {
+  background-color: rgba(63, 61, 61, 0.116);
+  border-radius: 20%;
 }
 
 .posting__post__user__image {
@@ -396,6 +446,11 @@ html {
 .posting__post__user__image > img {
   object-fit: contain;
   width: 64px;
+  transition: transform 400ms ease-in-out;
+}
+
+.posting__post__user:hover > .posting__post__user__image > img {
+  transform: scale(1.2);
 }
 
 .posting__post__user__username {
@@ -414,3 +469,81 @@ html {
 /* #endregion Posts */
 
 /* #endregion Home */
+
+/* #region UserProfile */
+.profile__container {
+  flex: 0.8;
+  background-color: rgba(252, 252, 252, 0.301);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__user__info {
+  display: flex;
+  align-items: center;
+  flex: 0.3;
+  border-bottom: 1px solid black;
+}
+
+.profile__user__image {
+  flex: 0.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__user__image > img {
+  object-fit: contain;
+  width: 156px;
+}
+
+.profile__user__basics {
+  flex: 0.4;
+}
+
+.profile__user__details {
+  flex: 0.4;
+}
+
+.profile__user__activity {
+  flex: 0.7;
+  display: flex;
+  flex-direction: row;
+}
+
+.profile__user__tweets {
+  flex: 0.7;
+  border-right: black 1px solid;
+}
+
+.profile__user__followers {
+  flex: 0.3;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__user__follower__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__user__follower__image {
+  display: flex;
+  flex-direction: row;
+  flex: 0.3;
+}
+
+.profile__user__follower__image > img {
+  object-fit: contain;
+  width: 96px;
+}
+
+.profile__user__follower__info {
+  flex: 0.7;
+}
+/* #endregion UserProfile */

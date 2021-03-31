@@ -174,7 +174,7 @@ def userProfile(request, user):
             'followUserForm': followForm,
             'isOwnProfile': isOwnProfile
         }
-        return render(request, 'profile/profile.html', context)
+        return render(request, 'profile/userProfile.html', context)
     else:
         return('login')
 

@@ -28,7 +28,7 @@ Mirat el que he fet i apunta cosetes que es podrien retocar o algo que trobis a 
 
 - Modificar plantilles perque sigui dinamiquies, objectes de BD
 
-- Modificar vista home ( views.py -> home)  perque al context afageixi els usuaris que no seguiex qui s'ha logejat
+- Modificar vista home ( views.py -> home) perque al context afageixi els usuaris que no seguiex qui s'ha logejat
 
 ### PERFIL
 
@@ -37,5 +37,3 @@ La meva idea es que el menú segueixi alla, pero que canvii tot el de la esquerr
 [![Image from Gyazo](https://i.gyazo.com/3afbbe9526d0ae3d39cd9cd5becab481.png)](https://gyazo.com/3afbbe9526d0ae3d39cd9cd5becab481)
 
 No se exactament com ferlo pero hauria de tenir un estil semblant al home
-
-

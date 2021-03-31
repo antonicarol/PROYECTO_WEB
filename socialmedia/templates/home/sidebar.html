@@ -5,7 +5,7 @@
     <div class="sidebar__user__image">
       <img
         id="#user__profile__image"
-        src="https://lh3.googleusercontent.com/proxy/j-ZyDeJsc4Afm-8BDAYSjUmBGlWDeuQ0rihpYxpg59kNZBMji8cFnVN3SVikG6sk8YrN7zbHP6LvYsAk6qxjJBCdY76xxBLnykwslFnVSZkvDpNXr5VXWd81esarpGwy1A"
+        src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
       />
     </div>
     <div class="sidebar__user__details">
@@ -14,15 +14,15 @@
   </div>
 
   <div class="sidebar__menu">
-    <div id="#home" class="sidebar__menu__option home">
+    <div class="sidebar__menu__option home">
       <span class="iconify" data-icon="fa:home"></span>
       <h3>Home</h3>
     </div>
-    <div id="#profile" class="sidebar__menu__option">
+    <div class="sidebar__menu__option profile">
       <span class="iconify" data-icon="vs:profile" data-inline="false"></span>
       <h3>Perfil</h3>
     </div>
-    <div id="#posts" class="sidebar__menu__option">
+    <div class="sidebar__menu__option tweets">
       <span
         class="iconify"
         data-icon="clarity:note-edit-solid"
@@ -30,7 +30,7 @@
       ></span>
       <h3>Tus Tweets</h3>
     </div>
-    <div id="#followers" class="sidebar__menu__option">
+    <div class="sidebar__menu__option followers">
       <span
         class="iconify"
         data-icon="ri:user-follow-fill"
@@ -52,8 +52,26 @@
   <script type="text/javascript">
     //Agafem el item del menu
     $(document).ready(function () {
-      $(".sidebar__menu__option").click(function () {
+      $(".home").click(function () {
+        $(".home").addClass("selected__option");
         window.location.replace("{% url 'home' %}");
+      });
+      $(".profile").click(function () {
+        var username = "{{user.username}}";
+        var url = "{% url 'profile' 0 %}".replace("0", username);
+        $(".profile").addClass("selected__option");
+        window.location.replace(url);
+      });
+      $(".tweets").click(function () {
+        $(".tweets").addClass("selected__option");
+        console.log("tweets");
+      });
+      $(".followers").click(function () {
+        $(".followers").addClass("selected__option");
+        console.log("followers");
+      });
+      $(".sidebar__logout").click(function () {
+        window.location.replace("{% url 'logout' %}");
       });
     });
   </script>
