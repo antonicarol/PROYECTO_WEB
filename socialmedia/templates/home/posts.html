@@ -1,8 +1,5 @@
 {% block content %}
 <div class="posting">
-  <div class="posting__title">
-    <h1>Posts</h1>
-  </div>
   <div class="posting__newPost">
     <div class="posting__newPost__user">
       <div class="posting__newPost__user__image">
@@ -12,82 +9,53 @@
       </div>
     </div>
     <div class="posting__newPost__content">
-      <textarea
-        cols="100"
-        rows="10"
-        type="text"
-        placeholder="Enter a text..."
-      ></textarea>
-      <button>Tweet</button>
+      <form method="POST" action="{% url 'addPost' %}">
+        {% csrf_token %}
+        <textarea
+          name="content"
+          class="newPost"
+          cols="100"
+          rows="10"
+          type="text"
+          placeholder="Enter a text..."
+        ></textarea>
+        <button type="submit">Tweet</button>
+      </form>
     </div>
   </div>
   <div class="posting__posts__container">
     <div class="posting__postsList">
-      <div class="posting__post">
-        <div class="posting__post__user">
-          <div class="posting__post__user__image">
+      {% for post in posts %}
+      <div
+        class="posting__post"
+        onClick="javascript:postClicked('{{ post.author }}')"
+      >
+        <div class="posting__post__user" id="{{ post.id }}">
+          <div class="posting__post__user__image" id="{{ post.id }}">
             <img
+              id="{{ post.id }}"
               src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
             />
           </div>
-          <div class="posting__post__user__username">
-            <h3>@Pedro</h3>
-            <p>25 min ago</p>
+          <div class="posting__post__user__username" id="{{ post.id }}">
+            <h3 id="{{ post.id }}">@{{ post.author }}</h3>
+            <p id="{{ post.id }}">{{ post.timestamp }}</p>
           </div>
         </div>
         <div class="posting__post__content">
-          <p>Welcome to the fucking sheeet neeeger!</p>
+          <p>{{ post.content }}</p>
         </div>
       </div>
-      <div class="posting__post">
-        <div class="posting__post__user">
-          <div class="posting__post__user__image">
-            <img
-              src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-            />
-          </div>
-          <div class="posting__post__user__username">
-            <h3>@Pedro</h3>
-            <p>25 min ago</p>
-          </div>
-        </div>
-        <div class="posting__post__content">
-          <p>Welcome to the fucking sheeet neeeger!</p>
-        </div>
-      </div>
-      <div class="posting__post">
-        <div class="posting__post__user">
-          <div class="posting__post__user__image">
-            <img
-              src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-            />
-          </div>
-          <div class="posting__post__user__username">
-            <h3>@Pedro</h3>
-            <p>25 min ago</p>
-          </div>
-        </div>
-        <div class="posting__post__content">
-          <p>ILLL EATT YOURRR PUSSSYYYY</p>
-        </div>
-      </div>
-      <div class="posting__post">
-        <div class="posting__post__user">
-          <div class="posting__post__user__image">
-            <img
-              src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-            />
-          </div>
-          <div class="posting__post__user__username">
-            <h3>@Pedro</h3>
-            <p>25 min ago</p>
-          </div>
-        </div>
-        <div class="posting__post__content">
-          <p>HEHEHEHEHHEHEHHEHEHHE NANEEEEEEEEEEEEEE</p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  function postClicked(author) {
+    console.log("post clicked");
+    var url = "{% url 'profile' 0 %}".replace("0", author);
+    document.location.replace(url);
+  }
+</script>
+
 {% endblock %}

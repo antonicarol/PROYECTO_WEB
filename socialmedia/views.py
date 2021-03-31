@@ -81,7 +81,6 @@ def login(request):
 @login_required
 def home(request):
     if request.user.is_authenticated:
-        print("User is auth")
         newPostForm = NewPostForm()
         posts = Post.objects.order_by('-timestamp')
         usersProfiles = UserProfile.objects.all()
@@ -133,6 +132,7 @@ def edit_profile(request):
 @login_required
 def userProfile(request, user):
     if request.user.is_authenticated:
+
         author = User.objects.get(username=user)
 
         posts = Post.objects.filter(author=author).order_by('-timestamp')
@@ -155,7 +155,6 @@ def userProfile(request, user):
 
         for follower in followers:
             if follower.follower.username == loggedUser.username:
-                print("is following")
                 isFollowingProfile = True
                 canFollow = 0
 
@@ -166,8 +165,10 @@ def userProfile(request, user):
                 'origin': 'profile'
             }
         )
+
         context = {
-            'user': user,
+            'user': loggedUser,
+            'userProfile': userProfile,
             'posts': posts,
             'followers': followers,
             'isFollowingProfile': isFollowingProfile,
@@ -179,15 +180,17 @@ def userProfile(request, user):
         return('login')
 
 
+@login_required
 def addPost(request):
-    if request.method == 'POST':
-        form = NewPostForm(request.POST)
-        if form.is_valid():
-            content = form.cleaned_data["content"]
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            data = request.POST
+            print(data)
+            content = data["content"]
             author = request.user
             if content != '':
                 Post.objects.create(content=content, author=author)
-            return redirect('home')
+                return redirect('home')
         else:
             return redirect('home')
 
