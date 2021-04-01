@@ -6,7 +6,9 @@
   <div class="login_parche">
     <div class="login__header">
       <h1>Tweeter</h1>
-      <img class="navbar_user" src="PROYECTO_WEB/socialmedia/static/img/icono_tweeetter.png" />
+      
+      {% load static %}
+      <img class="navbar_user" src="{% static "img/icono_tweeter.png" '%}" />
     </div>
     <div class="login__form">
       <form method="POST">

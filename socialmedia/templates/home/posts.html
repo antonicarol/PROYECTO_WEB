@@ -31,15 +31,14 @@
         onClick="javascript:postClicked('{{ post.author }}')"
       >
         <div class="posting__post__user" id="{{ post.id }}">
-          <div class="posting__post__user__image" id="{{ post.id }}">
+          <div class="posting__post__user__image">
             <img
-              id="{{ post.id }}"
               src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
             />
           </div>
-          <div class="posting__post__user__username" id="{{ post.id }}">
-            <h3 id="{{ post.id }}">@{{ post.author }}</h3>
-            <p id="{{ post.id }}">{{ post.timestamp }}</p>
+          <div class="posting__post__user__username">
+            <h3>@{{ post.author }}</h3>
+            <p>{{ post.timestamp }}</p>
           </div>
         </div>
         <div class="posting__post__content">
