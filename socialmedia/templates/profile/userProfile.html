@@ -8,13 +8,42 @@
       />
     </div>
     <div class="profile__user__basics">
-      <h1>@{{ userProfile.firstname }}</h1>
-      <h1>@{{ userProfile.lastname }}</h1>
       <h1>@{{ userProfile.profileUsername }}</h1>
       <p>Last login - 2 days ago</p>
     </div>
     <div class="profile__user__details">
-      <h1>@{{ userProfile.email }}</h1>
+    <div>
+        <span class="iconify" data-icon="si-glyph:badge-name" data-inline="false"></span>
+        <div>
+            <p>Pedro Gonzales</p>
+            <p></p>
+        </div>
+      </div>  
+      <div>
+        <span class="iconify" data-icon="dashicons:email-alt" data-inline="false"></span>
+        <p> {{ userProfile.email}}</p>
+      </div>
+      
+    </div>
+    <div class="profile__user__options">
+        {% if isOwnProfile %}
+              <button onClicl="editProfile()">Editar Perfil</button>
+        {% else %}
+            {% if isFollowingProfile %}
+            <form method="POST" action="{% url 'followUser' %}">
+                  {% csrf_token %}
+                  {{ followUserForm }}
+                <button>Dejar de Seguir</button>
+            </form>
+            {% else %}
+                 <form method="POST" action="{% url 'followUser' %}">
+                  {% csrf_token %}
+                  {{ followUserForm }}
+                <button>Seguir</button>
+            </form>
+            {% endif %}
+        {% endif %}
+
     </div>
   </div>
   <div class="profile__user__activity">
@@ -22,69 +51,49 @@
       <div class="posting__posts__container">
         <div class="posting__postsList">
           {% for post in posts %}
-          <div class="posting__post">
-            <div class="posting__post__user">
-              <div class="posting__post__user__image">
-                <img
-                  src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-                />
+            <div class="posting__post">
+              <div class="posting__post__user">
+                <div class="posting__post__user__image">
+                  <img
+                    src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
+                  />
+                </div>
+                <div class="posting__post__user__username">
+                  <h3>@{{ post.author }}</h3>
+                  <p>{{ post.timestamp }}</p>
+                </div>
               </div>
-              <div class="posting__post__user__username">
-                <h3>@{{ post.author }}</h3>
-                <p>{{ post.timestamp }}</p>
+              <div class="posting__post__content">
+                <p>{{ post.content }}</p>
               </div>
             </div>
-            <div class="posting__post__content">
-              <p>{{ post.content }}</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+      <div class="profile__user__followers">
+      {% for follower in followers %}
+        <div class="profile__user__follower__item">
+          <div class="profile__user__follower__image">
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
+              />
+            </div>
+            <div class="profile__user__follower__info">
+              <h3>{{ follower.follower}}</h3>
             </div>
           </div>
           {% endfor %}
         </div>
       </div>
-    </div>
-    <div class="profile__user__followers">
-      <div class="profile__user__follower__item">
-        <div class="profile__user__follower__image">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-          />
-        </div>
-        <div class="profile__user__follower__info">
-          <h3>@{{ Follow.follower }}</h3>
-        </div>
-      </div>
-      <div class="profile__user__follower__item">
-        <div class="profile__user__follower__image">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-          />
-        </div>
-        <div class="profile__user__follower__info">
-          <h3>@ Pedro</h3>
-        </div>
-      </div>
-      <div class="profile__user__follower__item">
-        <div class="profile__user__follower__image">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-          />
-        </div>
-        <div class="profile__user__follower__info">
-          <h3>@ Pedro</h3>
-        </div>
-      </div>
-      <div class="profile__user__follower__item">
-        <div class="profile__user__follower__image">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-          />
-        </div>
-        <div class="profile__user__follower__info">
-          <h3>@ Pedro</h3>
-        </div>
-      </div>
+
+      {% endblock %}
     </div>
   </div>
-
-  {% endblock %}
 </div>
+<script text="type/javascript">
+function editProfile(){
+
+}
+</script>

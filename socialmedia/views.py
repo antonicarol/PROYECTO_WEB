@@ -81,16 +81,31 @@ def login(request):
 @login_required
 def home(request):
     if request.user.is_authenticated:
-        newPostForm = NewPostForm()
+        user = request.user
         posts = Post.objects.order_by('-timestamp')
-        usersProfiles = UserProfile.objects.all()
+        users = UserProfile.objects.filter(
+            ~Q(user=user))
+        print(users)
+        notFollowingUsers = []
+        for u in users:
+            isFollowing = Follow.objects.filter(to=u, follower=user)
+            if isFollowing.count() == 0:
+                print(isFollowing)
+                followers = 1
+                notFollowingUsers.append(({
+                    'user': u,
+                    'followers': followers
+                }))
+
+        newPostForm = NewPostForm()
+
         context = {
             'user': {
                 'username': request.user.username,
             },
             'posts': posts,
             'newPostForm': newPostForm,
-            'users': usersProfiles
+            'notFollowingUsers': notFollowingUsers
         }
         return render(request, 'home/home.html', context)
     else:
@@ -129,7 +144,7 @@ def edit_profile(request):
         redirect('login')
 
 
-@login_required
+@ login_required
 def userProfile(request, user):
     if request.user.is_authenticated:
 
@@ -160,7 +175,7 @@ def userProfile(request, user):
 
         followForm = FollowUserForm(
             initial={
-                'username': user,
+                'username': author.username,
                 'action': canFollow,
                 'origin': 'profile'
             }
@@ -180,7 +195,7 @@ def userProfile(request, user):
         return('login')
 
 
-@login_required
+@ login_required
 def addPost(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -241,7 +256,7 @@ def deletePost(request, post_id):
         return render(request, 'posts/deletePost.html', context)
 
 
-@login_required
+@ login_required
 def follow_user(request):
     if request.method == 'POST':
         if request.user.is_authenticated:

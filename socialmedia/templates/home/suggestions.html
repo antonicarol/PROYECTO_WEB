@@ -7,6 +7,7 @@
       <h1>A Quien Seguir!</h1>
     </div>
     <div class="suggestions__follow__users">
+      {% for user in notFollowingUsers %}
       <div class="suggestion__follow__user__item">
         <div class="suggestion__follow__user__image">
           <img
@@ -14,55 +15,20 @@
           />
         </div>
         <div class="suggestion__follow__user__info">
-          <h3>Pedro</h3>
-          <h5>100 followers</h5>
+          <h3>{{ user.user }}</h3>
+          <h5>{{ user.followers }} followers</h5>
         </div>
         <div class="suggestion__follow__user__actions">
-          <button>Seguir</button>
+          <form method="POST" action="{% url 'followUser' %}">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{user.user}}" />
+            <input type="hidden" name="action" value="1" />
+            <input type="hidden" name="origin" value="home" />
+            <button type="submit">Seguir</button>
+          </form>
         </div>
       </div>
-      <div class="suggestion__follow__user__item">
-        <div class="suggestion__follow__user__image">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-          />
-        </div>
-        <div class="suggestion__follow__user__info">
-          <h3>Pedro</h3>
-          <h5>100 followers</h5>
-        </div>
-        <div class="suggestion__follow__user__actions">
-          <button>Seguir</button>
-        </div>
-      </div>
-      <div class="suggestion__follow__user__item">
-        <div class="suggestion__follow__user__image">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-          />
-        </div>
-        <div class="suggestion__follow__user__info">
-          <h3>Pedro</h3>
-          <h5>100 followers</h5>
-        </div>
-        <div class="suggestion__follow__user__actions">
-          <button>Seguir</button>
-        </div>
-      </div>
-      <div class="suggestion__follow__user__item">
-        <div class="suggestion__follow__user__image">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-          />
-        </div>
-        <div class="suggestion__follow__user__info">
-          <h3>Pedro</h3>
-          <h5>100 followers</h5>
-        </div>
-        <div class="suggestion__follow__user__actions">
-          <button>Seguir</button>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
