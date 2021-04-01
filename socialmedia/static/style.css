@@ -548,7 +548,6 @@ html {
 .profile__user__details {
   flex: 0.4;
 }
-
 .profile__user__activity {
   flex: 0.7;
   display: flex;
@@ -571,6 +570,7 @@ html {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  border: 10px solid black;
 }
 
 .profile__user__follower__image {

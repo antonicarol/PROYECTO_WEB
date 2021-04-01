@@ -8,13 +8,13 @@
       />
     </div>
     <div class="profile__user__basics">
+      <h1>@{{ userProfile.firstname }}</h1>
+      <h1>@{{ userProfile.lastname }}</h1>
       <h1>@{{ userProfile.profileUsername }}</h1>
       <p>Last login - 2 days ago</p>
     </div>
     <div class="profile__user__details">
-      <p>First Name: Pedro</p>
-      <p>Last Name: Gonzales</p>
-      <p>Email: pedro.gonzales@gmail.com</p>
+      <h1>@{{ userProfile.email }}</h1>
     </div>
   </div>
   <div class="profile__user__activity">
@@ -50,7 +50,7 @@
           />
         </div>
         <div class="profile__user__follower__info">
-          <h3>@ Pedro</h3>
+          <h3>@{{ Follow.follower }}</h3>
         </div>
       </div>
       <div class="profile__user__follower__item">
