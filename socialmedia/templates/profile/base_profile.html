@@ -1,0 +1,11 @@
+{% extends "base.html" %} 
+{% block content %} 
+    {% include 'home/sidebar.html' %}
+    
+    {% block profile %} 
+    {% endblock %}
+    <script type="text/javascript">
+    $('.profile').addClass("selected__option");
+    </script>
+
+{% endblock %}

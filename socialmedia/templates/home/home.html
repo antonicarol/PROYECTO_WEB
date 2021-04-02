@@ -1,12 +1,13 @@
-{% extends "base.html" %}
-{% block content %}
-
-        {% include 'home/sidebar.html' %}
+{% extends "home/base_home.html" %}
+{% block home %}
 
         {% include 'home/posts.html' %}
 
         {% include 'home/suggestions.html' %}
         
+        <script type="text/javascript">
+        $(".home").addClass("selected__option");
+        </script>
 </body>
 </html>
 {% endblock %}

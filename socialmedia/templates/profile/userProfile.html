@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block content %} {% include 'home/sidebar.html' %}
+{% extends "profile/base_profile.html" %} {% block profile %} 
 
 <div class="profile__container">
   <div class="profile__user__info">
@@ -88,7 +88,7 @@
         </div>
       </div>
 
-      {% endblock %}
+      
     </div>
   </div>
 </div>
@@ -97,3 +97,4 @@ function editProfile(){
 
 }
 </script>
+{% endblock %}
