@@ -3,7 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 
 from .forms import EditProfileForm, NewPostForm, NewUserForm, FollowUserForm, EditPostForm
-from .utils import checkPasswordMatches, checkPasswordSecurity
+
+from .utils import checkPasswordMatches, checkPasswordSecurity, checkUserExists, getNotFollowingUsers, checkIsOwnProfile, checkIsFollowingUser
 
 from django.contrib.auth.decorators import login_required
 from .models import Post, Follow, UserProfile
@@ -15,10 +16,10 @@ from django.db.models import Q
 
 
 def register(request):
-    form = NewUserForm()
+    registerform = NewUserForm()
 
     context = {
-        'form': form
+        'form': registerform
     }
 
     if request.method == 'POST':
@@ -28,7 +29,7 @@ def register(request):
             username = userData["username"]
             # Check if user exists with that username
             user = User.objects.filter(username=username)
-            if(user.__len__() > 0):
+            if checkUserExists(user):
                 context["error_code"] = "Usuario ya existe como " + username
                 return render(request, 'registration/register.html', context)
 
@@ -41,7 +42,7 @@ def register(request):
                 context["error_code"] = "Constraseña no segura, debe incluir MAYUS, minus y digito"
                 return render(request, 'registration/register.html', context)
 
-            if(password != repeatPassword):
+            if not checkPasswordMatches(password, repeatPassword):
                 context["error_code"] = "Las contraseñas no coinciden!"
                 return render(request, 'registration/register.html', context)
 
@@ -58,44 +59,13 @@ def register(request):
     return render(request, 'registration/register.html', context)
 
 
-def login(request):
-    form = LoginForm()
-
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-
-            if(loginUser(**form.cleaned_data)):
-                username = form.cleaned_data["username"]
-                print("Usuario logeado")
-                return redirect('/home/' + username)
-            else:
-                print("Este usuario no existe!")
-                return redirect('/login/')
-
-    context = {
-    }
-    return render(request, 'login/login.html', context)
-
-
 @login_required
 def home(request):
     if request.user.is_authenticated:
         user = request.user
         posts = Post.objects.order_by('-timestamp')
-        users = UserProfile.objects.filter(
-            ~Q(user=user))
-        print(users)
-        notFollowingUsers = []
-        for u in users:
-            isFollowing = Follow.objects.filter(to=u, follower=user)
-            if isFollowing.count() == 0:
-                print(isFollowing)
-                followers = 1
-                notFollowingUsers.append(({
-                    'user': u,
-                    'followers': followers
-                }))
+
+        notFollowingUsers = getNotFollowingUsers(user)
 
         newPostForm = NewPostForm()
 
@@ -161,17 +131,15 @@ def userProfile(request, user):
 
         loggedUser = request.user
 
-        isFollowingProfile = False
-        canFollow = 1
-        isOwnProfile = False
+        isOwnProfile = checkIsOwnProfile(author, loggedUser)
 
-        if author.username == loggedUser.username:
-            isOwnProfile = True
+        isFollowingProfile = checkIsFollowingUser(followers, loggedUser)
 
-        for follower in followers:
-            if follower.follower.username == loggedUser.username:
-                isFollowingProfile = True
-                canFollow = 0
+        canFollow = 0
+        if isFollowingProfile:
+            canFollow = 0
+        else:
+            canFollow = 1
 
         followForm = FollowUserForm(
             initial={

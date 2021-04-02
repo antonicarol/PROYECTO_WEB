@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from socialmedia.views import register, login, home, edit_profile, addPost, userProfile, follow_user, editPost, deletePost
+from socialmedia.views import register, home, edit_profile, addPost, userProfile, follow_user, editPost, deletePost
 
 urlpatterns = [
     path('admin/', admin.site.urls),
