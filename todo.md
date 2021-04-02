@@ -43,13 +43,13 @@ No se exactament com ferlo pero hauria de tenir un estil semblant al home
 FIco les idees noves que tinc.
 Sobre el home: 
   -El side bar de la esquerra, fer ho mes com si fos botons
-  -marcar en quin lloc del side bar estar.
+  -marcar en quin lloc del side bar estar. - DONE
   -ficar un fons diferent al side bar (crec que quedarà millor).
   -
   - el enter a text buscar una terminal per ficar de fons.
-  - he vist que si esta el text buit i li dones a enviar no tenim la excepció contorlada.
+  - he vist que si esta el text buit i li dones a enviar no tenim la excepció contorlada - DONE
 
-  - els post a lo millor modificaria el text perque no es vegues tant a la esquerra.
+  - els post a lo millor modificaria el text perq ue no es vegues tant a la esquerra.
 
 Perfil:
 Mirar el sin titulo.png

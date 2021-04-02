@@ -174,6 +174,8 @@ def addPost(request):
             if content != '':
                 Post.objects.create(content=content, author=author)
                 return redirect('home')
+            else:
+                return redirect('home')
         else:
             return redirect('home')
 
