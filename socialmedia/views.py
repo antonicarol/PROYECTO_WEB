@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 
 from .forms import EditProfileForm, NewPostForm, NewUserForm, FollowUserForm, EditPostForm
 
-from .utils import checkPasswordMatches, checkPasswordSecurity, checkUserExists, getNotFollowingUsers, checkIsOwnProfile, checkIsFollowingUser
+from .utils import checkPasswordMatches, checkPasswordSecurity, checkUserExists, getNotFollowingUsers, checkIsOwnProfile, checkIsFollowingUser, getPostsFromAuthor
 
 from django.contrib.auth.decorators import login_required
 from .models import Post, Follow, UserProfile
@@ -120,7 +120,9 @@ def userProfile(request, user):
 
         author = User.objects.get(username=user)
 
-        posts = Post.objects.filter(author=author).order_by('-timestamp')
+        posts = getPostsFromAuthor(author)
+
+        Post.objects.filter(author=author).order_by('-timestamp')
 
         userProfile = UserProfile.objects.get(user=author)
 

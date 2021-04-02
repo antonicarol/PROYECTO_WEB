@@ -2,6 +2,8 @@ import re
 from django.contrib.auth.models import User
 from .models import Post, Follow, UserProfile
 from django.db.models import Q
+from django.utils import timezone
+
 import enum
 
 
@@ -85,4 +87,69 @@ def checkIsFollowingUser(followers, loggedUser):
         if follower.follower.username == loggedUser.username:
             return True
     return False
+# endregion
+
+
+# region posts
+
+def getPostsFromAuthor(author):
+    posts = Post.objects.filter(author=author).order_by('-timestamp')
+
+    formattedPosts = []
+
+    for post in posts:
+        timestamp = post.timestamp
+        postedAt = getTimeInterval(timestamp)
+        print(postedAt)
+        formattedPosts.append({
+            'author': post.author,
+            'timestamp': postedAt,
+            'content': post.content,
+            'id': post.id
+        })
+
+    return formattedPosts
+
+
+def getTimeInterval(timestamp):
+    interval = (timezone.now() - timestamp).__str__()
+
+    if interval.__len__() > 15:
+        if interval.__len__() <= 23:
+            days = interval[0]
+            if int(days) == 1:
+                return days + " day ago"
+            else:
+                return days + " days ago"
+        else:
+            months = interval[0]
+            if int(months) == 1:
+                return months + " month ago"
+            else:
+                return months + " months ago"
+    else:
+        (hours, minutes, seconds) = interval.__str__().split(":")
+
+        if int(hours) > 0:
+            hours = hours.replace('0', '', 1)
+            if int(hours == 1):
+                return hours + " hour ago"
+            else:
+                return hours + " hours ago"
+
+        minutes = minutes.replace('0', '', 1)
+        if int(minutes) > 0:
+            if int(minutes == 1):
+                return minutes + " minut ago"
+            else:
+                return minutes + " minutes ago"
+
+        seconds = round(int(seconds), 2)
+        if int(seconds) > 0:
+            if int(seconds == 1):
+                return seconds + " second ago"
+            else:
+                return seconds + " seconds ago"
+
+
 # endregion
