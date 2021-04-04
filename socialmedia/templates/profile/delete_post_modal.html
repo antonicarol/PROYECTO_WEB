@@ -1,5 +1,62 @@
-{% extends 'profile/profile.html' %}
+{% block edit %}
 
-{% block delete %}
+<div onClick="openDeleteModal({{post.id}})" class="posting__post__option">
+  <span
+    class="iconify"
+    data-icon="fluent:delete-24-filled"
+    data-inline="false"
+  ></span>
+  <p>Delete</p>
+</div>
 
-{% endlock %}
+<!-- The Modal -->
+<div id="delete_post_modal" class="delete_post_modal">
+  <!-- Modal content -->
+  <div class="delete_post_modal-content">
+    <span onClick="close_delete_post_modal()" class="close">&times;</span>
+    <div class="posting__post">
+      <div class="posting__post__user">
+        <div class="posting__post__user__image">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
+          />
+          <h3>@{{ post.author }}</h3>
+        </div>
+        <div class="posting__post__user__username">
+          <p>{{ post.timestamp }}</p>
+        </div>
+      </div>
+      <div class="posting__post__content">
+        <p>
+          {% load static %} <img src="{% static "img/icono_tweeter.png" %}">
+          {{post.content }}
+        </p>
+      </div>
+    </div>
+    <div>
+      <p>Quieres eliminar este post?</p>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+      </form>
+      <button onClick="close_delete_post_modal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function openDeleteModal(post) {
+    var edit_modal = $("#delete_post_modal");
+
+    edit_modal.css("display", "block");
+
+    console.log(post);
+  }
+  function close_delete_post_modal() {
+    var edit_modal = $("#delete_post_modal");
+
+    edit_modal.css("display", "none");
+  }
+</script>
+
+{% endblock %}

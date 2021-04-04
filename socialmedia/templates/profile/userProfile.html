@@ -75,10 +75,7 @@
               {% if isOwnProfile %}
               <div class="posting__post__options">
               {% include 'profile/edit_post_modal.html'%}
-              <div class="posting__post__option">
-                <span onClick="deletePost({{post.id}})"class="iconify" data-icon="fluent:delete-24-filled" data-inline="false"></span>
-                <p>Delete</p>
-              </div>
+              {% include 'profile/delete_post_modal.html' %}
               </div>
               {% endif %}
             </div>
