@@ -119,7 +119,6 @@ def getAllPosts():
     for post in posts:
         timestamp = post.timestamp
         postedAt = getTimeInterval(timestamp)
-        print(postedAt)
         formattedPosts.append({
             'author': post.author,
             'timestamp': postedAt,
@@ -131,6 +130,7 @@ def getAllPosts():
 
 
 def getTimeInterval(timestamp):
+
     interval = (timezone.now() - timestamp).__str__()
 
     if interval.__len__() > 15:
@@ -163,12 +163,15 @@ def getTimeInterval(timestamp):
             else:
                 return minutes + " minutes ago"
 
-        seconds = round(int(seconds), 2)
-        if int(seconds) > 0:
-            if int(seconds == 1):
-                return seconds + " second ago"
-            else:
-                return seconds + " seconds ago"
+        n_seconds = round(float(seconds), 2)
+
+        if int(n_seconds) == 0:
+            print("keloke")
+            seconds = int(n_seconds)
+            return "Right now"
+        else:
+            seconds = int(n_seconds)
+            return str(seconds) + " seconds ago"
 
 
 # endregion

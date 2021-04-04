@@ -38,7 +38,6 @@ def register(request):
             repeatPassword = userData["repeatPassword"]
 
             if not checkPasswordSecurity(password):
-                print("not secure")
                 context["error_code"] = "Constraseña no segura, debe incluir MAYUS, minus y digito"
                 return render(request, 'registration/register.html', context)
 
@@ -168,7 +167,7 @@ def addPost(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             data = request.POST
-            print(data)
+
             content = data["content"]
             author = request.user
             if content != '':
@@ -230,7 +229,6 @@ def deletePost(request, post_id):
 def follow_user(request):
     if request.method == 'POST':
         if request.user.is_authenticated:
-            print(request.POST)
             username = request.POST["username"]
             action = int(request.POST["action"])
             origin = request.POST["origin"]

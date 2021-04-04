@@ -1,5 +1,27 @@
-{% extends 'profile/profile.html' %}
-
 {% block edit %}
 
-{% endlock %}
+<div onClick="openEditModal({{post.id}})" class="posting__post__option">
+  <span class="iconify" data-icon="fa-solid:edit" data-inline="false"></span>
+  <p>Edit</p>
+</div>
+
+<!-- The Modal -->
+<div id="edit_post_modal" class="edit_post_modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function openEditModal(post) {
+    var edit_modal = $("#edit_post_modal");
+
+    edit_modal.css("display", "block");
+
+    console.log(post);
+  }
+</script>
+
+{% endblock %}

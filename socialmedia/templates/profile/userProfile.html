@@ -11,8 +11,10 @@
       <h1>@{{ userProfile.profileUsername }}</h1>
       <p>Last login - 2 days ago</p>
     </div>
+
     <div class="profile__user__details">
     <div>
+        
         <span class="iconify" data-icon="si-glyph:badge-name" data-inline="false"></span>
         <div>
             <p>Pedro Gonzales</p>
@@ -72,10 +74,7 @@
               </div>
               {% if isOwnProfile %}
               <div class="posting__post__options">
-              <div class="posting__post__option">
-               <span onClick="editPost({{post.id}})" class="iconify" data-icon="fa-solid:edit" data-inline="false"></span>
-               <p>Edit</p>
-              </div>
+              {% include 'profile/edit_post_modal.html'%}
               <div class="posting__post__option">
                 <span onClick="deletePost({{post.id}})"class="iconify" data-icon="fluent:delete-24-filled" data-inline="false"></span>
                 <p>Delete</p>
@@ -128,9 +127,7 @@ function editProfile(){
   
 }
 
-function editPost(post){
-  console.log("edit post with id = " + post);
-}
+
 
 function deletePost(post){
   console.log("delete post with id = " + post);
