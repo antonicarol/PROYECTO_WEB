@@ -673,7 +673,7 @@ html {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .profile__user__follower__image {
@@ -688,7 +688,12 @@ html {
 }
 
 .profile__user__follower__info {
-  flex: 0.7;
+  flex: 0.5;
+}
+
+.profile__user__follower__info > h3 {
+  font-size: 1.7rem;
+  flex:0.2;
 }
 
 /* #endregion UserProfile */

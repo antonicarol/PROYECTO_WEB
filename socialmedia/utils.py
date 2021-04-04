@@ -111,6 +111,25 @@ def getPostsFromAuthor(author):
     return formattedPosts
 
 
+def getAllPosts():
+    posts = Post.objects.filter().order_by('-timestamp')
+
+    formattedPosts = []
+
+    for post in posts:
+        timestamp = post.timestamp
+        postedAt = getTimeInterval(timestamp)
+        print(postedAt)
+        formattedPosts.append({
+            'author': post.author,
+            'timestamp': postedAt,
+            'content': post.content,
+            'id': post.id
+        })
+
+    return formattedPosts
+
+
 def getTimeInterval(timestamp):
     interval = (timezone.now() - timestamp).__str__()
 
