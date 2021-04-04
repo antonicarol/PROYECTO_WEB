@@ -8,21 +8,13 @@ TO DO
 
 Mirat el que he fet i apunta cosetes que es podrien retocar o algo que trobis a faltar...
 
-- FER LA INTERACCIÓ DEL MENÚ
 
-  - Quan es fa click et porti al lloc on toca
+- Seccio de a qui seguir, pensar com ferla mes guai
 
-  ! Es pot fer amb un javascript - Exemple a sidebar.js
 
-  ```javascript
-  $(document).ready(function () {
-    $(".sidebar__menu__option").click(function () {
-      window.location.replace("{% url 'home' %}");
-    });
-  });
-  ```
+## PERFIL
 
-  ---- De moment que nomes redireccioni al de veure perfil, tema veure els teus twits i seguidors ja veurem
+Arreglar botons de "Delete Follower" als seguidors.
 
 ## EDITAR EL PERFIL
 
