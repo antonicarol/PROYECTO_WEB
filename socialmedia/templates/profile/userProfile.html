@@ -72,8 +72,14 @@
               </div>
               {% if isOwnProfile %}
               <div class="posting__post__options">
-                <span class="iconify" data-icon="fa-solid:edit" data-inline="false"></span>
-                <span class="iconify" data-icon="fluent:delete-24-filled" data-inline="false"></span>
+              <div class="posting__post__option">
+               <span onClick="editPost({{post.id}})" class="iconify" data-icon="fa-solid:edit" data-inline="false"></span>
+               <p>Edit</p>
+              </div>
+              <div class="posting__post__option">
+                <span onClick="deletePost({{post.id}})"class="iconify" data-icon="fluent:delete-24-filled" data-inline="false"></span>
+                <p>Delete</p>
+              </div>
               </div>
               {% endif %}
             </div>
@@ -83,6 +89,10 @@
       </div>
       
       <div class="profile__user__followers">
+      <div class="profile__user__followers__title">
+        <h1>Followers</h1>
+      </div>
+      
       {% for follower in followers %}
         <div class="profile__user__follower__item">
           <div class="profile__user__follower__image">
@@ -91,7 +101,7 @@
               />
             </div>
             <div class="profile__user__follower__info">
-              <h3>{{ follower.follower}}</h3>
+              <h3>@{{ follower.follower}}</h3>
             </div>
           </div>
           {% endfor %}
@@ -112,7 +122,15 @@
 {% endblock %}
 <script text="type/javascript">
 function editProfile(){
+  
+}
 
+function editPost(post){
+  console.log("edit post with id = " + post);
+}
+
+function deletePost(post){
+  console.log("delete post with id = " + post);
 }
 </script>
 {% endblock %}

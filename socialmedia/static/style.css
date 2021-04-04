@@ -540,8 +540,31 @@ html {
   align-items: center;
 }
 
-.posting__post__options > svg {
-  font-size: 64px;
+
+
+.posting__post__option > svg {
+  font-size: 48px;
+  margin-right: 20px;
+  cursor: pointer;
+  color:gray;
+  transition: color 200ms ease-in;
+}
+
+.posting__post__option > p{
+  opacity: 0;
+  color:gray;
+  transition: opacity 200ms ease-in-out;
+  transition: color 400ms ease-in-out;
+}
+
+.posting__post__option > svg:hover{
+  color:black;
+}
+
+.posting__post__option:hover > p {
+  opacity: 1;
+  color:black;
+  font-weight: 900;
 }
 /* #endregion Posts */
 
@@ -640,6 +663,11 @@ html {
   display: flex;
   flex-direction: column;
 }
+
+.profile__user__followers__title > h1{
+  text-align: center;
+}
+
 
 .profile__user__follower__item {
   display: flex;
