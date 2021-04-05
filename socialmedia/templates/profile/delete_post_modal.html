@@ -35,11 +35,18 @@
     </div>
     <div>
       <p>Quieres eliminar este post?</p>
-      <form method="POST" action="">
-        {% csrf_token %}
-        <button type="submit">Eliminar</button>
-      </form>
-      <button onClick="close_delete_post_modal()">Cancelar</button>
+      <div class="delete__post">
+        <form method="POST" action="{% url 'deletePost' %}">
+          {% csrf_token %}
+          <input type="hidden" name="post_id" value="{{post.id}}" />
+          <button class="btn red" type="submit">
+            <span>Si, deseo eliminar este post</span>
+          </button>
+        </form>
+        <button class="btn light" onClick="close_delete_post_modal()">
+          Cancelar
+        </button>
+      </div>
     </div>
   </div>
 </div>

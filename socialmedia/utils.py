@@ -100,7 +100,7 @@ def getPostsFromAuthor(author):
     for post in posts:
         timestamp = post.timestamp
         postedAt = getTimeInterval(timestamp)
-        print(postedAt)
+
         formattedPosts.append({
             'author': post.author,
             'timestamp': postedAt,
@@ -166,7 +166,6 @@ def getTimeInterval(timestamp):
         n_seconds = round(float(seconds), 2)
 
         if int(n_seconds) == 0:
-            print("keloke")
             seconds = int(n_seconds)
             return "Right now"
         else:

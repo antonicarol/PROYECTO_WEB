@@ -390,7 +390,7 @@ html {
   align-items: flex-end;
 }
 
-.posting__newPost__content > form > button {
+/*.posting__newPost__content > form > button {
   background-color: #638cb5;
   font-size: 20px;
   font-family: Verdana, Helvetica;
@@ -402,7 +402,7 @@ html {
   width: 150px;
   opacity: 80%;
   margin: 5px;
-}
+}*/
 
 .posting__newPost__content > form > textarea {
   -webkit-box-sizing: border-box;
@@ -516,11 +516,11 @@ html {
 .posting__post__content {
   margin-left: 20px;
   display: flex;
-  flex:0.7;
+  flex: 0.7;
   font-size: 1.5rem;
 }
 
-.posting__post__content > p{
+.posting__post__content > p {
   display: flex;
   align-items: flex-start;
   height: fit-content;
@@ -531,39 +531,36 @@ html {
   width: 32px;
 }
 
-
 .posting__post__options {
-  flex:0.2;
+  flex: 0.2;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-
-
 .posting__post__option > svg {
   font-size: 48px;
   margin-right: 20px;
   cursor: pointer;
-  color:gray;
+  color: gray;
   transition: color 200ms ease-in;
 }
 
-.posting__post__option > p{
+.posting__post__option > p {
   opacity: 0;
-  color:gray;
+  color: gray;
   transition: opacity 200ms ease-in-out;
   transition: color 400ms ease-in-out;
 }
 
-.posting__post__option > svg:hover{
-  color:black;
+.posting__post__option > svg:hover {
+  color: black;
 }
 
 .posting__post__option:hover > p {
   opacity: 1;
-  color:black;
+  color: black;
   font-weight: 900;
 }
 /* #endregion Posts */
@@ -664,10 +661,9 @@ html {
   flex-direction: column;
 }
 
-.profile__user__followers__title > h1{
+.profile__user__followers__title > h1 {
   text-align: center;
 }
-
 
 .profile__user__follower__item {
   display: flex;
@@ -693,7 +689,7 @@ html {
 
 .profile__user__follower__info > h3 {
   font-size: 1.7rem;
-  flex:0.2;
+  flex: 0.2;
 }
 
 /* #endregion UserProfile */

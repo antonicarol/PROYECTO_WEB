@@ -34,7 +34,7 @@ urlpatterns = [
 
     path('addPost/', addPost, name="addPost"),
     path('editPost/<int:post_id>', editPost, name="editPost"),
-    path('deletePost/<int:post_id>', deletePost, name="deletePost")
+    path('deletePost', deletePost, name="deletePost")
 
 
 ]

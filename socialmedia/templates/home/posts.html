@@ -19,7 +19,7 @@
           type="text"
           placeholder="Enter a text..."
         ></textarea>
-        <button type="submit">Tweet</button>
+        <button class="btn light" type="submit">Tweet</button>
       </form>
     </div>
   </div>
@@ -35,18 +35,17 @@
             <img
               src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
             />
-             <h3>@{{ post.author }}</h3>
+            <h3>@{{ post.author }}</h3>
           </div>
           <div class="posting__post__user__username">
             <p>{{ post.timestamp }}</p>
           </div>
         </div>
         <div class="posting__post__content">
-            <p>
-              {% load static %}
-              <img src="{% static "img/icono_tweeter.png" %}">
-              {{ post.content }}
-            </p>
+          <p>
+            {% load static %} <img src="{% static "img/icono_tweeter.png" %}">
+            {{ post.content }}
+          </p>
         </div>
       </div>
       {% endfor %}

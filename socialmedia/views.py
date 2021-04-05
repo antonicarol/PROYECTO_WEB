@@ -208,10 +208,11 @@ def editPost(request, post_id):
         return render(request, 'posts/editPost.html', context)
 
 
-def deletePost(request, post_id):
+def deletePost(request):
     if request.user.is_authenticated:
         if request.method == "POST":
             user = request.user
+            post_id = request.POST["post_id"]
             Post.objects.filter(id=post_id).delete()
 
             return redirect('profile', user.username)

@@ -45,16 +45,24 @@
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  background-color: rgba(53, 52, 52, 0.904); /* Black w/ opacity */
 }
 
 /* delete_post_modal Content/Box */
 .delete_post_modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  background-image: url("../img/background.jpg");
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scroll-behavior: none;
+  margin: 5% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.content {
+  background-image: url("../img/background.jpg");
+  width: 100%;
 }
 
 /* The Close Button */
@@ -70,4 +78,14 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.delete__post {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.delete__post > button {
 }
