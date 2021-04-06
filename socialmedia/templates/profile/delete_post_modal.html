@@ -39,11 +39,11 @@
         <form method="POST" action="{% url 'deletePost' %}">
           {% csrf_token %}
           <input type="hidden" name="post_id" value="{{post.id}}" />
-          <button class="btn red" type="submit">
+          <button class="btn red medium" type="submit">
             <span>Si, deseo eliminar este post</span>
           </button>
         </form>
-        <button class="btn light" onClick="close_delete_post_modal()">
+        <button class="btn light medium" onClick="close_delete_post_modal()">
           Cancelar
         </button>
       </div>

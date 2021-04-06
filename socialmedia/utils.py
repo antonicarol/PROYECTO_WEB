@@ -174,3 +174,48 @@ def getTimeInterval(timestamp):
 
 
 # endregion
+
+
+def getLastLogin(userProfile):
+    lastLogin = userProfile.lastLogin
+
+    interval = (timezone.now() - lastLogin).__str__()
+
+    if interval.__len__() > 15:
+        if interval.__len__() <= 23:
+            days = interval[0]
+            if int(days) == 1:
+                return days + " day ago"
+            else:
+                return days + " days ago"
+        else:
+            months = interval[0]
+            if int(months) == 1:
+                return months + " month ago"
+            else:
+                return months + " months ago"
+    else:
+        (hours, minutes, seconds) = interval.__str__().split(":")
+
+        if int(hours) > 0:
+            hours = hours.replace('0', '', 1)
+            if int(hours == 1):
+                return hours + " hour ago"
+            else:
+                return hours + " hours ago"
+
+        minutes = minutes.replace('0', '', 1)
+        if int(minutes) > 0:
+            if int(minutes == 1):
+                return minutes + " minut ago"
+            else:
+                return minutes + " minutes ago"
+
+        n_seconds = round(float(seconds), 2)
+
+        if int(n_seconds) == 0:
+            seconds = int(n_seconds)
+            return "Right now"
+        else:
+            seconds = int(n_seconds)
+            return str(seconds) + " seconds ago"

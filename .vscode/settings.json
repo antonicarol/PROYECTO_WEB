@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\Antoni Carol Mateo\\miniconda3\\envs\\django\\python.exe",
+    "python.pythonPath": "C:\\Users\\joan1\\miniconda3\\envs\\django\\python.exe",
     "prettier.documentSelectors": [
         "{   \"folders\": [],   \"settings\": {},   \"editor.formatOnSave\": true, }"
     ],

@@ -9,7 +9,7 @@
     </div>
     <div class="profile__user__basics">
       <h1>@{{ userProfile.profileUsername }}</h1>
-      <p>Last login - 2 days ago</p>
+      <p>Last Login : {{lastLogin}}</p>
     </div>
 
     <div class="profile__user__details">
@@ -29,19 +29,25 @@
     </div>
     <div class="profile__user__options">
         {% if isOwnProfile %}
-              <button onClicl="editProfile()">Editar Perfil</button>
+              <button class="btn blue large" onClick="editProfile()">
+                <span>Editar Perfil</span>
+              </button>
         {% else %}
             {% if isFollowingProfile %}
             <form method="POST" action="{% url 'followUser' %}">
                   {% csrf_token %}
                   {{ followUserForm }}
-                <button>Dejar de Seguir</button>
+                <button type="submit" class="btn red large">
+                  <span>Dejar de Seguir</span>
+                </button>
             </form>
             {% else %}
                  <form method="POST" action="{% url 'followUser' %}">
                   {% csrf_token %}
                   {{ followUserForm }}
-                <button>Seguir</button>
+                <button class="btn blue large">
+                  <span>Seguir</span>
+                </button>
             </form>
             {% endif %}
         {% endif %}
@@ -100,7 +106,19 @@
               <h3>@{{ follower.follower}}</h3>
             </div>
             <div class="profile__user__follower__options">
-              <button>Delete follower </button>
+            {% if isOwnProfile %}
+              
+              <form method="POST" action="{% url 'followUser' %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="0" />
+                <input type="hidden" name="origin" value="ownProfile" />
+                <input type="hidden" name="username" value={{follower.follower}} />
+                <input type="hidden" name="profile" value="{{userProfile.profileUsername}}" />
+                <button type="submit" class="btn light small">
+                <span> Delete follower </span>
+              </button>
+              </form>
+            {% endif %}
             </div>
           </div>
           {% endfor %}

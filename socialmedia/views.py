@@ -4,12 +4,12 @@ from django.shortcuts import redirect, render
 
 from .forms import EditProfileForm, NewPostForm, NewUserForm, FollowUserForm, EditPostForm
 
-from .utils import checkPasswordMatches, checkPasswordSecurity, checkUserExists, getNotFollowingUsers, checkIsOwnProfile, checkIsFollowingUser, getPostsFromAuthor, getAllPosts
+from .utils import checkPasswordMatches, checkPasswordSecurity, checkUserExists, getNotFollowingUsers, checkIsOwnProfile, checkIsFollowingUser, getPostsFromAuthor, getAllPosts, getLastLogin
 
 from django.contrib.auth.decorators import login_required
 from .models import Post, Follow, UserProfile
 
-from datetime import datetime
+from django.utils import timezone
 from django.db.models import Q
 
 # Create your views here.
@@ -67,6 +67,12 @@ def home(request):
         notFollowingUsers = getNotFollowingUsers(user)
 
         newPostForm = NewPostForm()
+
+        # Update las login user
+
+        userProfile = UserProfile.objects.get(user=user)
+
+        userProfile.lastLogin = timezone.now()
 
         context = {
             'user': {
@@ -140,6 +146,10 @@ def userProfile(request, user):
         else:
             canFollow = 1
 
+        # Get the interval within the user logged in
+
+        lastLogin = getLastLogin(userProfile)
+
         followForm = FollowUserForm(
             initial={
                 'username': author.username,
@@ -155,7 +165,8 @@ def userProfile(request, user):
             'followers': followers,
             'isFollowingProfile': isFollowingProfile,
             'followUserForm': followForm,
-            'isOwnProfile': isOwnProfile
+            'isOwnProfile': isOwnProfile,
+            'lastLogin': lastLogin
         }
         return render(request, 'profile/userProfile.html', context)
     else:
@@ -234,18 +245,41 @@ def follow_user(request):
             action = int(request.POST["action"])
             origin = request.POST["origin"]
             if(username is not None):
-                loggedUser = request.user
-                userProfile = UserProfile.objects.get(profileUsername=username)
-                if action == 1:
-                    # Follow
-                    Follow.objects.create(follower=loggedUser, to=userProfile)
+                if origin == "profile":
+                    loggedUser = request.user
+                    userProfile = UserProfile.objects.get(
+                        profileUsername=username)
+                    if action == 1:
+                        # Follow
+                        Follow.objects.create(
+                            follower=loggedUser, to=userProfile)
 
-                elif action == 0:
-                    # Unfollow
-                    Follow.objects.filter(
-                        follower=loggedUser, to=userProfile).delete()
+                    elif action == 0:
+                        # Unfollow
+                        followerUserProfile = UserProfile.objects.get(
+                            profileUsername=username)
 
-                if(origin == "home"):
-                    return redirect('home')
-                elif(origin == "profile"):
+                        Follow.objects.filter(
+                            follower=loggedUser, to=followerUserProfile).delete()
+
                     return redirect('profile', username)
+                elif origin == "ownProfile":
+                    loggedUser = request.user
+                    loggedUserProfile = UserProfile.objects.get(
+                        profileUsername=loggedUser.username)
+
+                    follower = User.objects.get(username=username)
+                    if action == 0:
+                        # Unfollow
+                        Follow.objects.filter(
+                            follower=loggedUser, to=loggedUserProfile).delete()
+                        return redirect('profile', loggedUser.username)
+                elif origin == "home":
+                    loggedUser = request.user
+                    userProfile = UserProfile.objects.get(
+                        profileUsername=username)
+                    if action == 1:
+                        # Follow
+                        Follow.objects.create(
+                            follower=loggedUser, to=userProfile)
+                    return redirect('home')
