@@ -50,3 +50,5 @@ DISENY DEL EDIATAR
 
 Perfil:
 Mirar el sin titulo.png
+
+### RESPONSIVE SHET
