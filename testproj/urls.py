@@ -33,7 +33,7 @@ urlpatterns = [
     # endregion
 
     path('addPost/', addPost, name="addPost"),
-    path('editPost/<int:post_id>', editPost, name="editPost"),
+    path('editPost/', editPost, name="editPost"),
     path('deletePost', deletePost, name="deletePost")
 
 

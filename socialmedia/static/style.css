@@ -453,6 +453,7 @@ html {
 
 .posting__postsList::-webkit-scrollbar {
   display: none;
+  -moz-appearance: none;
 }
 
 .posting__post {
@@ -530,6 +531,18 @@ html {
   width: 32px;
 }
 
+.posting__post__content textarea {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  width: 40vw;
+  resize: none;
+}
+
+.posting__post__content textarea:focus {
+  outline: none;
+}
+
 .posting__post__options {
   flex: 0.2;
   display: flex;
@@ -599,10 +612,9 @@ html {
 .profile__user__basics {
   flex: 0.3;
 }
-  
 
-.profile__user__basics > p{
-  color:gray;
+.profile__user__basics > p {
+  color: gray;
 }
 
 .profile__user__details {
@@ -633,8 +645,6 @@ html {
   align-items: center;
   flex: 0.2;
 }
-
-
 
 .profile__user__activity {
   flex: 0.7;

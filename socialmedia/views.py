@@ -190,33 +190,17 @@ def addPost(request):
             return redirect('home')
 
 
-def editPost(request, post_id):
+def editPost(request):
     if request.user.is_authenticated:
         if request.method == "POST":
-
+            post_id = int(request.POST["postId"])
             content = request.POST["content"]
-            timestamp = datetime.now()
 
             Post.objects.filter(id=post_id).update(
-                content=content, timestamp=timestamp)
+                content=content)
 
             post = Post.objects.get(id=post_id)
             return redirect('profile', post.author)
-        else:
-
-            post = Post.objects.get(id=post_id)
-
-            form = EditPostForm(
-                initial={
-                    'content': post.content
-                }
-            )
-
-            context = {
-                'post': post,
-                'form': form,
-            }
-        return render(request, 'posts/editPost.html', context)
 
 
 def deletePost(request):
@@ -227,14 +211,6 @@ def deletePost(request):
             Post.objects.filter(id=post_id).delete()
 
             return redirect('profile', user.username)
-        else:
-
-            post = Post.objects.get(id=post_id)
-
-            context = {
-                'post': post,
-            }
-        return render(request, 'posts/deletePost.html', context)
 
 
 @ login_required
