@@ -4,10 +4,10 @@ from django.shortcuts import redirect, render
 
 from .forms import EditProfileForm, NewPostForm, NewUserForm, FollowUserForm, EditPostForm
 
-from .utils import checkPasswordMatches, checkPasswordSecurity, checkUserExists, getNotFollowingUsers, checkIsOwnProfile, checkIsFollowingUser, getPostsFromAuthor, getAllPosts, getLastLogin
+from .utils import checkPasswordMatches, checkPasswordSecurity, checkUserExists, getNotFollowingUsers, checkIsOwnProfile, getFollowers, checkIsFollowingUser, getPostsFromAuthor, getAllPosts, getLastLogin
 
 from django.contrib.auth.decorators import login_required
-from .models import Post, Follow, UserProfile
+from .models import Post, Follow, UserProfile, Image
 
 from django.utils import timezone
 from django.db.models import Q
@@ -72,6 +72,8 @@ def home(request):
 
         userProfile = UserProfile.objects.get(user=user)
 
+        userImage = Image.objects.get(userProfile=userProfile)
+
         userProfile.lastLogin = timezone.now()
 
         context = {
@@ -80,7 +82,9 @@ def home(request):
             },
             'posts': posts,
             'newPostForm': newPostForm,
-            'notFollowingUsers': notFollowingUsers
+            'notFollowingUsers': notFollowingUsers,
+            'userImage': userImage
+
         }
         return render(request, 'home/home.html', context)
     else:
@@ -129,16 +133,17 @@ def userProfile(request, user):
 
         userProfile = UserProfile.objects.get(user=author)
 
-        followers = Follow.objects.filter(
-            to=userProfile).order_by('-startedFollowingAt')
+        followers = getFollowers(userProfile)
 
         # Check if the logged user is following this user
 
         loggedUser = request.user
 
         isOwnProfile = checkIsOwnProfile(author, loggedUser)
-
-        isFollowingProfile = checkIsFollowingUser(followers, loggedUser)
+        if followers.__len__() > 0:
+            isFollowingProfile = checkIsFollowingUser(followers, loggedUser)
+        else:
+            isFollowingProfile = False
 
         canFollow = 0
         if isFollowingProfile:
@@ -158,6 +163,8 @@ def userProfile(request, user):
             }
         )
 
+        userImage = Image.objects.get(userProfile=userProfile)
+
         context = {
             'user': loggedUser,
             'userProfile': userProfile,
@@ -166,7 +173,8 @@ def userProfile(request, user):
             'isFollowingProfile': isFollowingProfile,
             'followUserForm': followForm,
             'isOwnProfile': isOwnProfile,
-            'lastLogin': lastLogin
+            'lastLogin': lastLogin,
+            'userImage': userImage
         }
         return render(request, 'profile/userProfile.html', context)
     else:
@@ -182,7 +190,8 @@ def addPost(request):
             content = data["content"]
             author = request.user
             if content != '':
-                Post.objects.create(content=content, author=author)
+                userProfile = UserProfile.objects.get(user=author)
+                Post.objects.create(content=content, author=userProfile)
                 return redirect('home')
             else:
                 return redirect('home')

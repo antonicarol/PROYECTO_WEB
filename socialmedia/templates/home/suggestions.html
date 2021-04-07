@@ -10,13 +10,10 @@
       {% for user in notFollowingUsers %}
       <div class="suggestion__follow__user__item">
         <div class="suggestion__follow__user__image">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
-          />
+          <img src="{{user.userImage.image.url}}" />
         </div>
         <div class="suggestion__follow__user__info">
           <h3>@{{ user.user }}</h3>
-          
         </div>
         <div class="suggestion__follow__user__actions">
           <form method="POST" action="{% url 'followUser' %}">

@@ -1,11 +1,5 @@
-{% block edit %}
+{% block edit_profile %}
 
-<div onClick="openEditModal({{post.id}})" class="posting__post__option">
-  <span class="iconify" data-icon="fa-solid:edit" data-inline="false"></span>
-  <p>Edit</p>
-</div>
-
-<!-- The Modal -->
 <div id="edit_post_modal" class="edit_post_modal">
   <!-- Modal content -->
   <div class="edit_post_modal-content">
@@ -63,4 +57,4 @@
   }
 </script>
 
-{% endblock %}
+ {% endblock %}

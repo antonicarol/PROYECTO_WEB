@@ -4,7 +4,7 @@
   <div class="profile__user__info">
     <div class="profile__user__image">
       <img
-        src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
+        src="{{userImage.image.url}}"
       />
     </div>
     <div class="profile__user__basics">
@@ -63,7 +63,7 @@
               <div class="posting__post__user">
                 <div class="posting__post__user__image">
                   <img
-                    src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
+                    src="{{post.image.image.url}}"
                   />
                   <h3>@{{ post.author }}</h3>
                 </div>
@@ -99,11 +99,11 @@
         <div class="profile__user__follower__item">
           <div class="profile__user__follower__image">
               <img
-                src="https://images-na.ssl-images-amazon.com/images/I/71r4nHPkV0L.png"
+                src="{{follower.image.image.url}}"
               />
             </div>
             <div class="profile__user__follower__info">
-              <h3>@{{ follower.follower}}</h3>
+              <h3>@{{ follower.username}}</h3>
             </div>
             <div class="profile__user__follower__options">
             {% if isOwnProfile %}

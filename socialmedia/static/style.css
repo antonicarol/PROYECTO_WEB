@@ -412,26 +412,6 @@ html {
 }
 
 .newPost {
-  overflow: hidden;
-  background-color: #fff;
-  color: #222;
-  font-family: Courier, monospace;
-  font-weight: normal;
-  font-size: 24px;
-  resize: none;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 45px;
-  padding-bottom: 34px;
-  background-image: url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png),
-    url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png);
-  background-repeat: repeat-y, repeat;
-  opacity: 0.8;
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  height: 200px;
 }
 
 .posting__posts__container {

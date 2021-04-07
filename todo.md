@@ -10,6 +10,8 @@ Mirat el que he fet i apunta cosetes que es podrien retocar o algo que trobis a 
 
 - Seccio de a qui seguir, pensar com ferla mes guai
 
+- Cambiar el input pls
+
 ## PERFIL
 
 Arreglar botons de "Delete Follower" als seguidors.

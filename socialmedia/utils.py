@@ -1,6 +1,6 @@
 import re
 from django.contrib.auth.models import User
-from .models import Post, Follow, UserProfile
+from .models import Post, Follow, UserProfile, Image
 from django.db.models import Q
 from django.utils import timezone
 
@@ -62,18 +62,39 @@ def getNotFollowingUsers(loggedUser):
 
     for u in users:
         isFollowing = Follow.objects.filter(to=u, follower=loggedUser)
+        image = Image.objects.get(userProfile=u)
+        print(image)
         if isFollowing.count() == 0:
             followers = 1
             notFollowingUsers.append(({
                 'user': u,
-                'followers': followers
+                'followers': followers,
+                'userImage': image
             }))
 
     return notFollowingUsers
+
 # endregion
 
 
 # region  Profile
+
+def getFollowers(userProfile):
+    followers = Follow.objects.filter(
+        to=userProfile).order_by('-startedFollowingAt')
+
+    formattedFollowers = []
+    for follower in followers:
+        followerProfile = UserProfile.objects.get(user=follower.follower)
+        image = Image.objects.get(userProfile=followerProfile)
+        formattedFollowers.append({
+            'follower': follower,
+            'username': follower.follower.username,
+            'image': image
+        })
+
+    return formattedFollowers
+
 
 def checkIsOwnProfile(author, loggedUser):
     if author.username == loggedUser.username:
@@ -84,7 +105,8 @@ def checkIsOwnProfile(author, loggedUser):
 
 def checkIsFollowingUser(followers, loggedUser):
     for follower in followers:
-        if follower.follower.username == loggedUser.username:
+        username = follower["username"]
+        if username == loggedUser.username:
             return True
     return False
 # endregion
@@ -93,19 +115,21 @@ def checkIsFollowingUser(followers, loggedUser):
 # region posts
 
 def getPostsFromAuthor(author):
-    posts = Post.objects.filter(author=author).order_by('-timestamp')
+    userProfile = UserProfile.objects.get(user=author)
+    posts = Post.objects.filter(author=userProfile).order_by('-timestamp')
 
     formattedPosts = []
 
     for post in posts:
         timestamp = post.timestamp
         postedAt = getTimeInterval(timestamp)
-
+        image = Image.objects.get(userProfile=post.author)
         formattedPosts.append({
             'author': post.author,
             'timestamp': postedAt,
             'content': post.content,
-            'id': post.id
+            'id': post.id,
+            'image': image
         })
 
     return formattedPosts
@@ -119,11 +143,13 @@ def getAllPosts():
     for post in posts:
         timestamp = post.timestamp
         postedAt = getTimeInterval(timestamp)
+        image = Image.objects.get(userProfile=post.author)
         formattedPosts.append({
             'author': post.author,
             'timestamp': postedAt,
             'content': post.content,
-            'id': post.id
+            'id': post.id,
+            'userImage': image
         })
 
     return formattedPosts
