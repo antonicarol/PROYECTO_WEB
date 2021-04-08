@@ -83,7 +83,7 @@ def home(request):
             'posts': posts,
             'newPostForm': newPostForm,
             'notFollowingUsers': notFollowingUsers,
-            'userImage': userImage
+            'userImage': userImage,
 
         }
         return render(request, 'home/home.html', context)
@@ -123,7 +123,7 @@ def edit_profile(request):
         redirect('login')
 
 
-@ login_required
+@login_required
 def userProfile(request, user):
     if request.user.is_authenticated:
 
