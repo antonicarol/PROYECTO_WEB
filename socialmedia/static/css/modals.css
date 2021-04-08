@@ -122,3 +122,24 @@
   width: 80%; /* Could be more or less, depending on screen size */
   height: 40%;
 }
+
+.edit__profile {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.edit__profile__image {
+  flex: 0.3;
+}
+
+.edit__profile__basics {
+  flex: 0.5;
+}
+
+.edit__profile__buttons {
+  flex: 0.2;
+  align-self: flex-end;
+  justify-self: flex-end;
+}

@@ -50,10 +50,7 @@ DISENY DEL EDIATAR
 
 - els post a lo millor modificaria el text perq ue no es vegues tant a la esquerra.
 
-
-
 ### RESPONSIVE SHET
-
 
 Error en el @ con el nombre, ver imagen de error_01, se tendra que modiciar el padding del div o alguna cosas así.
 error al publicar post-s (debe ser por la bdd)
