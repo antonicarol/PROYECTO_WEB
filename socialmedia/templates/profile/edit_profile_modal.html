@@ -1,60 +1,34 @@
 {% block edit_profile %}
 
-<div id="edit_post_modal" class="edit_post_modal">
+<div onClick="openEditProfileModal()" class="profileing__profile__option">
+  <button class="btn blue large" onClick="editProfile()">
+    <span>Editar Perfil</span>
+  </button>
+</div>
+
+<!-- The Modal -->
+<div id="edit_profile_modal" class="edit_profile_modal">
   <!-- Modal content -->
-  <div class="edit_post_modal-content">
+  <div class="edit_profile_modal-content">
     <div class="content">
-      <span onClick="close_edit_post_modal()" class="close">&times;</span>
-      <form action="{% url 'editPost' %}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="postId" value="{{post.id}}" />
-        <div class="posting__post">
-          <div class="posting__post__user">
-            <div class="posting__post__user__image">
-              <img
-                src="{{post.image.image.url}}"
-              />
-              <h3>@{{ post.author }}</h3>
-            </div>
-            <div class="posting__post__user__username">
-              <p>{{ post.timestamp }}</p>
-            </div>
-          </div>
-          <div class="posting__post__content">
-            <p>
-              {% load static %} <img src="{% static "img/icono_tweeter.png" %}">
-              <textarea rows='4' columns='100' name="content">{{post.content}}</textarea>
-            </p>
-          </div>
-        </div>
-      <div>
-        <div class="edit__post">
-          <button class="btn blue medium" type="submit">
-            <span>Editar</span>
-          </button>
-          <button class="btn light medium" onClick="close_edit_post_modal()">
-            <span>Cancelar</span>
-          </button>
-        </div>
-        </form>
-      </div>
+      <span onClick="close_edit_profile_modal()" class="close">&times;</span>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
-  function openEditModal(post) {
-    var edit_modal = $("#edit_post_modal");
+  function openEditProfileModal(profile) {
+    var edit_modal = $("#edit_profile_modal");
 
     edit_modal.css("display", "block");
 
-    console.log(post);
+    console.log(profile);
   }
-  function close_edit_post_modal() {
-    var edit_modal = $("#edit_post_modal");
+  function close_edit_profile_modal() {
+    var edit_modal = $("#edit_profile_modal");
 
     edit_modal.css("display", "none");
   }
 </script>
 
- {% endblock %}
+{% endblock %}

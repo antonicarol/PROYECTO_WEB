@@ -69,7 +69,7 @@ def home(request):
         newPostForm = NewPostForm()
 
         # Update las login user
-
+        print(user)
         userProfile = UserProfile.objects.get(user=user)
 
         userImage = Image.objects.get(userProfile=userProfile)

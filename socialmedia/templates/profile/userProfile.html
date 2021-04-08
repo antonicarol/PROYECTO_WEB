@@ -29,9 +29,7 @@
     </div>
     <div class="profile__user__options">
         {% if isOwnProfile %}
-              <button class="btn blue large" onClick="editProfile()">
-                <span>Editar Perfil</span>
-              </button>
+              {% include 'profile/edit_profile_modal.html' %}
         {% else %}
             {% if isFollowingProfile %}
             <form method="POST" action="{% url 'followUser' %}">
@@ -51,7 +49,6 @@
             </form>
             {% endif %}
         {% endif %}
-
     </div>
   </div>
   <div class="profile__user__activity">
