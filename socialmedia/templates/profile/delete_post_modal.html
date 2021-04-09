@@ -10,11 +10,13 @@
 </div>
 
 <!-- The Modal -->
-<div id="delete_post_modal" class="delete_post_modal">
+<div id="delete_post_modal_{{post.id}}" class="delete_post_modal">
   <!-- Modal content -->
   <div class="delete_post_modal-content">
     <div class="content">
-      <span onClick="close_delete_post_modal()" class="close">&times;</span>
+      <span onClick="close_delete_post_modal({{post.id}})" class="close"
+        >&times;</span
+      >
       <div class="posting__post">
         <div class="posting__post__user">
           <div class="posting__post__user__image">
@@ -53,14 +55,14 @@
 
 <script type="text/javascript">
   function openDeleteModal(post) {
-    var edit_modal = $("#delete_post_modal");
+    var edit_modal = $("#delete_post_modal_" + post);
 
     edit_modal.css("display", "block");
 
     console.log(post);
   }
-  function close_delete_post_modal() {
-    var edit_modal = $("#delete_post_modal");
+  function close_delete_post_modal(post) {
+    var edit_modal = $("#delete_post_modal_" + post);
 
     edit_modal.css("display", "none");
   }

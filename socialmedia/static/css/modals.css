@@ -129,19 +129,12 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border: 1px solid black;
 }
 
-.edit__profile__image {
-  flex: 0.3;
-}
-
-.edit__profile__image svg {
-  position: absolute;
-  z-index: 999;
-  top: 40%;
-  font-size: 64px;
-  left: 17%;
+.edit__profile__image > img {
+  object-fit: contain;
+  width: 256px;
+  border-radius: 30px;
 }
 
 .edit__profile__basics {

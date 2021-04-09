@@ -196,6 +196,8 @@ html {
 
 .sidebar__user {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar__user__image {
@@ -208,11 +210,12 @@ html {
 
 .sidebar__user__image > img {
   object-fit: contain;
-  height: 128px;
+  width: 216px;
+  border-radius: 20px;
+  margin-top: 10px;
 }
 
 .sidebar__user__details {
-  flex: 0.6;
   display: flex;
 }
 
@@ -329,7 +332,7 @@ html {
 
 .suggestion__follow__user__image > img {
   object-fit: contain;
-  border-radius: 10%;
+  border-radius: 20px;
   width: 64px;
 }
 
@@ -375,6 +378,7 @@ html {
 .posting__newPost__user__image > img {
   object-fit: contain;
   width: 128px;
+  border-radius: 20px;
 }
 
 .posting__newPost__content {
@@ -404,14 +408,23 @@ html {
 }*/
 
 .posting__newPost__content > form > textarea {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  resize: none;
-  width: 100%;
 }
 
 .newPost {
+  background-color: rgba(189, 189, 189, 0.301);
+  border: none;
+  font-size: 1.5rem;
+  height: 150px;
+  width: 100%;
+  padding: 10px;
+  resize: none;
+  transition: padding;
+}
+
+.newPost:focus {
+  outline: none;
+  background-color: rgba(63, 61, 61, 0.281);
+  padding: 10px;
 }
 
 .posting__posts__container {
@@ -477,6 +490,8 @@ html {
   object-fit: contain;
   width: 64px;
   transition: transform 400ms ease-in-out;
+  margin-right: 20px;
+  border-radius: 20px;
 }
 
 .posting__post__user:hover > .posting__post__user__image > img {
@@ -509,6 +524,7 @@ html {
 .posting__post__content > p > img {
   object-fit: contain;
   width: 32px;
+  border-radius: 20px;
 }
 
 .posting__post__content textarea {
@@ -587,6 +603,7 @@ html {
 .profile__user__image > img {
   object-fit: contain;
   width: 156px;
+  border-radius: 20px;
 }
 
 .profile__user__basics {
