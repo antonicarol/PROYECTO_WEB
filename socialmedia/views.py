@@ -4,10 +4,11 @@ from django.shortcuts import redirect, render
 
 from .forms import EditProfileForm, NewPostForm, NewUserForm, FollowUserForm, EditPostForm
 
-from .utils import checkPasswordMatches, checkPasswordSecurity, checkUserExists, getNotFollowingUsers, checkIsOwnProfile, getFollowers, checkIsFollowingUser, getPostsFromAuthor, getAllPosts, getLastLogin
+from .utils import *
 
 from django.contrib.auth.decorators import login_required
 from .models import Post, Follow, UserProfile, Image
+
 
 from django.utils import timezone
 from django.db.models import Q
@@ -90,6 +91,8 @@ def home(request):
 
         userProfile.lastLogin = timezone.now()
 
+        userProfile.save()
+
         context = {
             'user': {
                 'username': request.user.username,
@@ -158,31 +161,20 @@ def userProfile(request, user):
         else:
             canFollow = 1
 
-        # Get the interval within the user logged in
-
-        lastLogin = getLastLogin(userProfile)
-
-        followForm = FollowUserForm(
-            initial={
-                'username': author.username,
-                'action': canFollow,
-                'origin': 'profile'
-            }
-        )
-
         userImage = Image.objects.get(userProfile=userProfile)
 
         isFirstTime = False
         if(not userProfile.firstname):
             isFirstTime = True
 
+        lastLogin = getLastLogin(userProfile)
+        print(lastLogin)
         context = {
             'user': loggedUser,
             'userProfile': userProfile,
             'posts': posts,
             'followers': followers,
             'isFollowingProfile': isFollowingProfile,
-            'followUserForm': followForm,
             'isOwnProfile': isOwnProfile,
             'lastLogin': lastLogin,
             'userImage': userImage,

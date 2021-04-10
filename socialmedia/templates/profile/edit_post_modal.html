@@ -10,40 +10,19 @@
               <!-- Modal content -->
               <div class="edit_post_modal-content">
                 <div class="content">
-                  <span onClick="close_edit_post_modal({{post.id}})" class="close">&times;</span>
-                  <form action="{% url 'editPost' %}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="postId" value="{{post.id}}" />
-                    <div class="posting__post">
-                      <div class="posting__post__user">
-                        <div class="posting__post__user__image">
-                          <img
-                            src="{{post.image.image.url}}"
-                          />
-                          <h3>@{{ post.author }}</h3>
-                        </div>
-                        <div class="posting__post__user__username">
-                          <p>{{ post.timestamp }}</p>
-                        </div>
-                      </div>
-                      <div class="posting__post__content">
-                        <p>
-                          {% load static %} <img src="{% static "img/icono_tweeter.png" %}">
-                          <textarea rows='4' columns='100' name="content">{{post.content}}</textarea>
-                        </p>
-                      </div>
-                    </div>
+                  <span onClick="closeEditModal({{post.id}})" class="close">&times;</span>
+                  {% include 'posts/editPost.html' %}
                   <div>
                     <div class="edit__post">
                       <button class="btn blue medium" type="submit">
                         <span>Editar</span>
                       </button>
-                        </form>
-                      <button class="btn light medium" onClick="close_edit_post_modal()">
+                      
+                      <button type="button" class="btn light medium" onClick="closeEditModal({{post.id}})">
                         <span>Cancelar</span>
                       </button>
                     </div>
-                  
+                    </form>
                   </div>
                 </div>
               </div>
@@ -59,7 +38,7 @@
 
     console.log(post);
   }
-  function close_edit_post_modal(post) {
+  function closeEditModal(post) {
     var edit_modal = $("#edit_post_modal_" + post);
 
     edit_modal.css("display", "none");

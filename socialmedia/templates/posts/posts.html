@@ -23,28 +23,7 @@
   </div>
   <div class="posting__posts__container">
     <div class="posting__postsList">
-      {% for post in posts %}
-      <div
-        class="posting__post"
-        onClick="javascript:postClicked('{{ post.author }}')"
-      >
-        <div class="posting__post__user" id="{{ post.id }}">
-          <div class="posting__post__user__image">
-            <img src="{{post.userImage.image.url}}" />
-            <h3>@{{ post.author }}</h3>
-          </div>
-          <div class="posting__post__user__username">
-            <p>{{ post.timestamp }}</p>
-          </div>
-        </div>
-        <div class="posting__post__content">
-          <p>
-            {% load static %} <img src="{% static "img/icono_tweeter.png" %}">
-            {{ post.content }}
-          </p>
-        </div>
-      </div>
-      {% endfor %}
+      {% for post in posts %} {% include 'posts/post.html' %} {% endfor %}
     </div>
   </div>
 </div>

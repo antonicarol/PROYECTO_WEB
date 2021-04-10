@@ -1,14 +1,22 @@
-{% extends "base.html" %}
-{% block content %}
-
-<h1>Edit Post</h1>
-
-<p> {{ post.content }}</p> 
-
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <button type="sumbit"> Editar Post</button>
-
-    </form>
-{% endblock %}
+<form action="{% url 'editPost' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="postId" value="{{post.id}}" />
+                    <div class="posting__post">
+                      <div class="posting__post__user">
+                        <div class="posting__post__user__image">
+                          <img
+                            src="{{post.image.image.url}}"
+                          />
+                          <h3>@{{ post.author }}</h3>
+                        </div>
+                        <div class="posting__post__user__username">
+                          <p>{{ post.timestamp }}</p>
+                        </div>
+                      </div>
+                      <div class="posting__post__content">
+                        <p>
+                          {% load static %} <img src="{% static "img/icono_tweeter.png" %}">
+                          <textarea rows='4' columns='100' name="content">{{post.content}}</textarea>
+                        </p>
+                      </div>
+                    </div>

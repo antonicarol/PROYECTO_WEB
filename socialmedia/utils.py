@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from .models import Post, Follow, UserProfile, Image
 from django.db.models import Q
 from django.utils import timezone
-
 import enum
 
 
@@ -74,10 +73,17 @@ def getNotFollowingUsers(loggedUser):
 
     return notFollowingUsers
 
-# endregion
 
+# endregion
+""" {% if isOwnProfile %}
+  <div class="posting__post__options">
+    {% include 'profile/edit_post_modal.html'%} {%
+    include'profile/delete_post_modal.html' %}
+  </div>
+  {% endif %}"""
 
 # region  Profile
+
 
 def getFollowers(userProfile):
     followers = Follow.objects.filter(
@@ -194,6 +200,9 @@ def getTimeInterval(timestamp):
         if int(n_seconds) == 0:
             seconds = int(n_seconds)
             return "Right now"
+        if int(n_seconds) == 1:
+            seconds = int(n_seconds)
+            return "1 second ago"
         else:
             seconds = int(n_seconds)
             return str(seconds) + " seconds ago"
@@ -245,3 +254,9 @@ def getLastLogin(userProfile):
         else:
             seconds = int(n_seconds)
             return str(seconds) + " seconds ago"
+
+
+def updateLastLogin(userProfile):
+    if userProfile is not None:
+        print(userProfile.lastLogin)
+        userProfile.lastlogin = timezone.now()

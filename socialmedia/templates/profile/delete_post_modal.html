@@ -14,39 +14,30 @@
   <!-- Modal content -->
   <div class="delete_post_modal-content">
     <div class="content">
-      <span onClick="close_delete_post_modal({{post.id}})" class="close"
+      <span onClick="closeDeleteModal({{post.id}})" class="close"
         >&times;</span
       >
-      <div class="posting__post">
-        <div class="posting__post__user">
-          <div class="posting__post__user__image">
-            <img src="{{post.image.image.url}}" />
-            <h3>@{{ post.author }}</h3>
-          </div>
-          <div class="posting__post__user__username">
-            <p>{{ post.timestamp }}</p>
-          </div>
-        </div>
-        <div class="posting__post__content">
-          <p>
-            {% load static %} <img src="{% static "img/icono_tweeter.png" %}">
-            {{post.content }}
-          </p>
-        </div>
-      </div>
+      <div class="posting__post"></div>
+
+      {% include 'posts/post.html' %}
+
       <div>
         <p>Quieres eliminar este post?</p>
+         <form method="POST" action="{% url 'deletePost' %}">
+        {% csrf_token %}
         <div class="delete__post">
-          <form method="POST" action="{% url 'deletePost' %}">
-            {% csrf_token %}
             <input type="hidden" name="post_id" value="{{post.id}}" />
             <button class="btn red medium" type="submit">
               <span>Si, deseo eliminar este post</span>
             </button>
+            <button
+              type="button"
+              class="btn light medium"
+              onClick="closeDeleteModal({{post.id}})"
+            >
+              <span>Cancelar</span>
+            </button>
           </form>
-          <button class="btn light medium" onClick="close_delete_post_modal()">
-            Cancelar
-          </button>
         </div>
       </div>
     </div>
@@ -61,7 +52,7 @@
 
     console.log(post);
   }
-  function close_delete_post_modal(post) {
+  function closeDeleteModal(post) {
     var edit_modal = $("#delete_post_modal_" + post);
 
     edit_modal.css("display", "none");
