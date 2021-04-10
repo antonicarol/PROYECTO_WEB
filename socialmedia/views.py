@@ -273,8 +273,9 @@ def follow_user(request):
                         return redirect('profile', loggedUser.username)
                 elif origin == "home":
                     loggedUser = request.user
+                    u = User.objects.get(username= username)
                     userProfile = UserProfile.objects.get(
-                        profileUsername=username)
+                        user=u)
                     if action == 1:
                         # Follow
                         Follow.objects.create(
