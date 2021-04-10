@@ -12,6 +12,9 @@ from .models import Post, Follow, UserProfile, Image
 from django.utils import timezone
 from django.db.models import Q
 
+from django.conf import settings
+
+
 # Create your views here.
 
 
@@ -51,7 +54,16 @@ def register(request):
 
             user.save()
 
-            UserProfile.objects.create(user=user, profileUsername=username)
+            userProfile = UserProfile.objects.create(
+                user=user, profileUsername=username)
+
+            # Create default image
+            img = Image.objects.get(id=1)
+
+            img.pk = None
+            img.title = username
+            img.userProfile = userProfile
+            img.save()
 
             return redirect('login')
 
@@ -68,8 +80,7 @@ def home(request):
 
         newPostForm = NewPostForm()
 
-        # Update las login user
-        print(user)
+        # Update las login user)
         userProfile = UserProfile.objects.get(user=user)
 
         userImage = Image.objects.get(userProfile=userProfile)
@@ -91,36 +102,29 @@ def home(request):
         return redirect('login')
 
 
+@login_required
 def edit_profile(request):
     if request.user.is_authenticated:
+        print(request.POST)
         user = request.user
         if request.method == 'POST':
-            form = EditProfileForm(request.POST)
-            if form.is_valid():
-                data = form.cleaned_data
-                UserProfile.objects.filter(user=user).update(
-                    email=data["email"], firstname=data["first_name"], lastname=data["last_name"])
+            first_name = request.POST["first_name"]
+            last_name = request.POST["last_name"]
+            email = request.POST["email"]
+            print(request.FILES["profileImage"])
+            image = request.FILES["profileImage"]
 
-                return redirect('home')
-
-        else:
             userProfile = UserProfile.objects.get(user=user)
-            form = EditProfileForm(
-                initial={
-                    "email": userProfile.email,
-                    "first_name": userProfile.firstname,
-                    "last_name": userProfile.lastname
-                }
-            )
 
-            context = {
-                'form': form,
-                'user': user
-            }
-            return render(request, 'profile/editProfile.html', context)
+            # Delete previous image
+            Image.objects.get(title=user.username).delete()
 
-    else:
-        redirect('login')
+            Image.objects.create(title=user.username,
+                                 userProfile=userProfile, image=image)
+            UserProfile.objects.filter(user=user).update(
+                email=email, firstname=first_name, lastname=first_name)
+
+            return redirect('profile', user.username)
 
 
 @login_required

@@ -12,40 +12,58 @@
   <div class="edit_profile_modal-content">
     <div class="content">
       <span onClick="close_edit_profile_modal()" class="close">&times;</span>
-      <div class="edit__profile">
-        <div class="edit__profile__image">
-          <img src="{{userImage.image.url}}" />
-          <span
-            class="iconify"
-            data-icon="bx:bxs-message-square-edit"
-            data-inline="false"
-          ></span>
-        </div>
-        <form method="POST" action="{% url 'home' %}">
+      <form
+        method="POST"
+        action="{% url 'editProfile' %}"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="edit__profile">
+          <div class="edit__profile__image">
+            <img src="{{userImage.image.url}}" />
+            <input type="file" name="profileImage" />
+          </div>
           <div class="edit__profile__basics">
             <div class="input__container">
               <label for="first_name">Nombre</label>
+              {% if userProfile.first_name is None %}
               <input name="first_name" />
+              {% else %}
+              <input name="first_name" value="{{userProfile.first_name}}" />
+              {% endif %}
             </div>
             <div class="input__container">
               <label for="last_name">Apellido</label>
+              {% if userProfile.last_name is None %}
               <input name="last_name" />
+              {% else %}
+              <input name="last_name" value="{{userProfile.last_name}}" />
+              {% endif %}
             </div>
             <div class="input__container">
               <label for="email">Email</label>
+              {% if userProfile.email is None %}
               <input type="email" name="email" />
+              {% else %}
+              <input type="email" name="email" value="{{userProfile.email}}" />
+              {% endif %}
             </div>
           </div>
-        </form>
-        <div class="edit__profile__buttons">
-          <button class="btn medium blue" type="submit">
-            <span>Editar Perfil</span>
-          </button>
-          <button class="btn medium light">
-            <span>Cancelar</span>
-          </button>
+
+          <div class="edit__profile__buttons">
+            <button class="btn medium blue" type="submit">
+              <span>Editar Perfil</span>
+            </button>
+            <button
+              type="button"
+              onClick="close_edit_profile_modal()"
+              class="btn medium light"
+            >
+              <span>Cancelar</span>
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
