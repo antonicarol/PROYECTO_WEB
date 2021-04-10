@@ -68,6 +68,15 @@
   </div>
 </div>
 
+{% if isFirstTime %}
+<script type="text/javascript">
+  $(document).ready(function () {
+    var edit_modal = $("#edit_profile_modal");
+    edit_modal.css("display", "block");
+  });
+</script>
+{% endif %}
+
 <script type="text/javascript">
   function openEditProfileModal(profile) {
     var edit_modal = $("#edit_profile_modal");

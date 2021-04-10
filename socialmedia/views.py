@@ -14,6 +14,8 @@ from django.db.models import Q
 
 from django.conf import settings
 
+from django.contrib.auth import authenticate, login
+
 
 # Create your views here.
 
@@ -65,7 +67,8 @@ def register(request):
             img.userProfile = userProfile
             img.save()
 
-            return redirect('login')
+            login(request, user)
+            return redirect('profile', username)
 
     return render(request, 'registration/register.html', context)
 
@@ -94,7 +97,7 @@ def home(request):
             'posts': posts,
             'newPostForm': newPostForm,
             'notFollowingUsers': notFollowingUsers,
-            'userImage': userImage,
+            'userImage': userImage
 
         }
         return render(request, 'home/home.html', context)
@@ -122,7 +125,7 @@ def edit_profile(request):
             Image.objects.create(title=user.username,
                                  userProfile=userProfile, image=image)
             UserProfile.objects.filter(user=user).update(
-                email=email, firstname=first_name, lastname=first_name)
+                email=email, firstname=first_name, lastname=first_name, firstTime=True)
 
             return redirect('profile', user.username)
 
@@ -169,6 +172,10 @@ def userProfile(request, user):
 
         userImage = Image.objects.get(userProfile=userProfile)
 
+        isFirstTime = False
+        if(not userProfile.firstname):
+            isFirstTime = True
+
         context = {
             'user': loggedUser,
             'userProfile': userProfile,
@@ -178,7 +185,8 @@ def userProfile(request, user):
             'followUserForm': followForm,
             'isOwnProfile': isOwnProfile,
             'lastLogin': lastLogin,
-            'userImage': userImage
+            'userImage': userImage,
+            'isFirstTime': isFirstTime
         }
         return render(request, 'profile/userProfile.html', context)
     else:
