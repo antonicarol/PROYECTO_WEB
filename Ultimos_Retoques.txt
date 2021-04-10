@@ -1,0 +1,26 @@
+1- Cuando registras un nuevo usuario, en el side bar de la izquierda se canvia la imagen cuando seleccionas otro perfil.
+
+
+2- Los apellidos aparecen mal 
+
+3- Todo el editar perfil se teiene que modificar y puede imagen de fondo diferente 
+
+4- Mejorar los botones
+
+
+5 El seguir los usuario  no funciona
+
+6- Login / Register hacer mas ancho, y mejorar los imputs. Mejorar el pajaro hacerlo mas bonito. Typografia
+7- Mas espacio en los imputs del login y Register
+
+
+8- En el Enter a text....   Poner la imagen del pajaro rojo en el imput.
+
+
+9- Cuando marcas el home o perfil en el side bar que aparezca mas grande el texto y la imagen, tambien mirar como quedaria el sombreado circular.
+
+
+10- Limit de caracteres en el post y en los imputs
+
+11- Estructura de les teemplates (El toni fuma hardala)
+

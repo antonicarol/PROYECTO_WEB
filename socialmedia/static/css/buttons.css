@@ -61,6 +61,12 @@
   color: black;
 }
 
+.btn_light_small{
+  background-color: #638cb5b8;
+  color: black;
+  
+}
+
 .btn.blue:hover,
 .btn.blue:focus {
   background-color: #638cb5;
