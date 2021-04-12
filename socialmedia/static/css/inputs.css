@@ -1,0 +1,32 @@
+.input__container {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    margin-top:10px;
+}
+
+.input__container > label {
+    margin-right: 10px;
+  }
+
+.input__container > input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    color: #555;
+    box-sizing: border-box;
+    font-family: 'Arvo';
+    font-size: 18px;
+    left: 50%;
+    top: 50%;
+    width: 200px;
+  
+}
+
+.input__container > input:focus {
+   outline: none;
+  
+}

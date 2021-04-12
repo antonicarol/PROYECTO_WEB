@@ -1,11 +1,6 @@
 {% block content %}
 <div class="posting">
   <div class="posting__newPost">
-    <div class="posting__newPost__user">
-      <div class="posting__newPost__user__image">
-        <img src="{{userImage.image.url}}" />
-      </div>
-    </div>
     <div class="posting__newPost__content">
       <form method="POST" action="{% url 'addPost' %}">
         {% csrf_token %}

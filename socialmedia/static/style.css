@@ -30,8 +30,8 @@ html {
 .login_parche {
   border: 1px solid black;
   position: relative;
-  background-color: rgba(240, 233, 233, 0.925);
-  width: 22%;
+  background-color: rgba(240, 233, 233, 0.473);
+  width: 33%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,9 +39,7 @@ html {
   font-size: 30 large;
   border-radius: 10%;
 }
-.input__container > input:focus {
-  background-color: rgb(182, 155, 155);
-}
+
 .login__header {
   display: flex;
   flex-direction: column;
@@ -49,32 +47,15 @@ html {
   align-items: center;
 }
 .login_submit {
-  background-color: #638cb5;
-  font-size: 20px;
-  font-family: Verdana, Helvetica;
-  color: rgb(253, 237, 237);
-  border-radius: 5%;
-  border: 2px solid black;
-  cursor: pointer;
-  height: 50px;
-  width: 150px;
-  opacity: 80%;
+ 
 }
 .login__header > img {
   width: 256px;
   padding-bottom: 25px;
 }
 
-.input__container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 5px;
-}
 
-.input__container > label {
-  margin-right: 10px;
-}
+
 
 .login__form__submit {
   display: flex;
@@ -103,26 +84,14 @@ html {
 .register_parche {
   border: 1px solid black;
   position: relative;
-  background-color: rgba(240, 233, 233, 0.925);
-  width: 22%;
+  background-color: rgba(240, 233, 233, 0.473);
+  width: 33%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 30 large;
   border-radius: 10%;
-}
-.register_submit {
-  background-color: #638cb5;
-  font-size: 20px;
-  font-family: Verdana, Helvetica;
-  color: rgb(253, 237, 237);
-  border-radius: 5%;
-  border: 2px solid black;
-  cursor: pointer;
-  height: 50px;
-  width: 150px;
-  opacity: 80%;
 }
 
 .register__header {
@@ -137,15 +106,6 @@ html {
   padding-bottom: 25px;
 }
 
-.input__container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.input__container > label {
-  margin-right: 10px;
-}
 
 .register__form__submit {
   display: flex;
@@ -358,27 +318,7 @@ html {
 .posting__newPost {
   display: flex;
   flex-direction: row;
-  align-items: center;
   flex: 0.2;
-}
-
-.posting__newPost__user {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.posting__newPost__user__image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-
-.posting__newPost__user__image > img {
-  object-fit: contain;
-  width: 128px;
-  border-radius: 20px;
 }
 
 .posting__newPost__content {
@@ -407,15 +347,13 @@ html {
   margin: 5px;
 }*/
 
-.posting__newPost__content > form > textarea {
-}
 
 .newPost {
   background-color: rgba(189, 189, 189, 0.301);
   border: none;
   font-size: 1.5rem;
   height: 150px;
-  width: 100%;
+  width: 90%;
   padding: 10px;
   resize: none;
   transition: padding;

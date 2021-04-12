@@ -4,10 +4,8 @@
 
 4- Mejorar los botones
 
-
-5 El seguir los usuario  no funciona
-
 6- Login / Register hacer mas ancho, y mejorar los imputs. Mejorar el pajaro hacerlo mas bonito. Typografia
+
 7- Mas espacio en los imputs del login y Register
 
 
