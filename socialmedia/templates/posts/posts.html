@@ -27,12 +27,6 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  function postClicked(author) {
-    console.log("post clicked");
-    var url = "{% url 'profile' 0 %}".replace("0", author);
-    document.location.replace(url);
-  }
-</script>
+
 
 {% endblock %}

@@ -1,7 +1,7 @@
 <div class="posting__post">
-  <div class="posting__post__user">
+  <div class="posting__post__user" onClick="postClicked('{{post.author}}')">
     <div class="posting__post__user__image">
-      <img src="{{post.image.image.url}}" />
+      <img src="{{post.userImage.image.url}}" />
       <h3>@{{ post.author }}</h3>
     </div>
     <div class="posting__post__user__username">
@@ -14,3 +14,11 @@
     </p>
   </div>
 </div>
+
+<script type="text/javascript">
+  function postClicked(author) {
+    console.log("post clicked");
+    var url = "{% url 'profile' 0 %}".replace("0", author);
+    document.location.replace(url);
+  }
+</script>

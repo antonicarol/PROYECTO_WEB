@@ -100,7 +100,7 @@ def home(request):
             'posts': posts,
             'newPostForm': newPostForm,
             'notFollowingUsers': notFollowingUsers,
-            'userImage': userImage
+            'loggedUserImage': userImage
 
         }
         return render(request, 'home/home.html', context)
@@ -178,7 +178,8 @@ def userProfile(request, user):
             'isOwnProfile': isOwnProfile,
             'lastLogin': lastLogin,
             'userImage': userImage,
-            'isFirstTime': isFirstTime
+            'isFirstTime': isFirstTime,
+            'loggedUserImage': userImage
         }
         return render(request, 'profile/userProfile.html', context)
     else:
@@ -265,7 +266,7 @@ def follow_user(request):
                         return redirect('profile', loggedUser.username)
                 elif origin == "home":
                     loggedUser = request.user
-                    u = User.objects.get(username= username)
+                    u = User.objects.get(username=username)
                     userProfile = UserProfile.objects.get(
                         user=u)
                     if action == 1:
