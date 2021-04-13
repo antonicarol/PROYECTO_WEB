@@ -1,21 +1,24 @@
 .btn {
   margin: 10px;
   overflow: hidden;
-
+  text-align: center;
   border-width: 0;
   outline: none;
-  border-radius: 2px;
+  border-radius: 5%;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-
-  background-color: #2ecc71;
-  color: #ecf0f1;
-
+  background-color: rgb(182, 177, 177);
   transition: background-color 0.3s;
 }
 
 .btn:hover,
 .btn:focus {
-  background-color: #27ae60;
+  background-color: #9ca09e;
+}
+
+.btn.small span {
+  display: inline;
+  padding: 12px 24px;
+  
 }
 .btn.medium span {
   display: block;
@@ -49,6 +52,7 @@
 .btn.light {
   background-color: #bbbbbbde;
   color: black;
+  text-align: center;
 }
 
 .btn.light:hover,
@@ -70,4 +74,21 @@
 .btn.blue:hover,
 .btn.blue:focus {
   background-color: #638cb5;
+}
+
+.btn.medium svg{
+  object-fit: contain;
+  font-size: 40px;
+  width: 125px;
+
+} 
+
+.btn.small svg{
+  object-fit: contain;
+  font-size: 20px;
+}
+
+.btn.large svg{
+  object-fit: contain;
+  font-size:40px;
 }
