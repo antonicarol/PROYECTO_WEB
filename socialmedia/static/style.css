@@ -275,19 +275,19 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 20px;
 }
 
 .suggestion__follow__user__item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex: 1;
+  justify-content: space-around;
   width: 80%;
 }
 
 .suggestion__follow__user__image {
-  flex: 0.1;
+  flex:0.3;
 }
 
 .suggestion__follow__user__image > img {
@@ -298,19 +298,15 @@ html {
 
 .suggestion__follow__user__info {
   display: flex;
-  width: 80%;
-  flex: 0.8;
+  flex:0.5;
 }
 .suggestion__follow__user__info > h3 {
-  font-size: 1.8rem;
-  flex: 0.6;
-}
-.suggestion__follow__user__info > h5 {
-  font-size: 1.2rem;
-  color: gray;
-  flex: 0.4;
+  font-size: 2rem;
 }
 
+.suggestion__follow__user__actions{
+  flex:0.2;
+}
 /* #endregion Suggestions */
 
 /* #region Posts */
