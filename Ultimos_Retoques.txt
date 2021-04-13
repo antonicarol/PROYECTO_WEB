@@ -1,16 +1,13 @@
-1- Imagen de sidebar cambia cuando entramos perfil no nuestro
-
-
-2- Los apellidos aparecen mal 
-
 3- Todo el editar perfil se teiene que modificar y puede imagen de fondo diferente 
 
 4- Mejorar los botones
 
+8- afegir iconos als diferents botons
+
 6- Login / Register hacer mas ancho, y mejorar los imputs. Mejorar el pajaro hacerlo mas bonito. Typografia
 
 
-8- afegir iconos als diferents botons
+
 
 9- Acabar de tocar els inputs  EDITAR PERFIL / LOGIN / REGISTER
 
@@ -18,8 +15,3 @@
 
 11- Estructura de les teemplates (El toni fuma hardala)
 
-
-
-12- Si no es selecciona imatge, dona error --> EDITAR PERFIL
-
-13- No es posa el valor del firstname lastname

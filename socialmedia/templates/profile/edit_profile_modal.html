@@ -26,18 +26,18 @@
           <div class="edit__profile__basics">
             <div class="input__container">
               <label for="first_name">Nombre</label>
-              {% if userProfile.first_name is None %}
+              {% if userProfile.firstname is None %}
               <input name="first_name" />
               {% else %}
-              <input name="first_name" value="{{userProfile.first_name}}" />
+              <input name="first_name" value="{{userProfile.firstname}}" />
               {% endif %}
             </div>
             <div class="input__container">
               <label for="last_name">Apellido</label>
-              {% if userProfile.last_name is None %}
+              {% if userProfile.lastname is None %}
               <input name="last_name" />
               {% else %}
-              <input name="last_name" value="{{userProfile.last_name}}" />
+              <input name="last_name" value="{{userProfile.lastname}}" />
               {% endif %}
             </div>
             <div class="input__container">
