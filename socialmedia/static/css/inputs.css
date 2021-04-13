@@ -16,13 +16,14 @@
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #CCC;
-    color: #555;
+    color: rgb(48, 48, 48);
     box-sizing: border-box;
     font-family: 'Arvo';
     font-size: 18px;
     left: 50%;
     top: 50%;
     width: 200px;
+    
   
 }
 

@@ -195,7 +195,6 @@ html {
 }
 .sidebar__menu__option > h3 {
   flex: 0.7;
-  font-size: 1.2rem;
   transition: text-decoration 200ms ease-in-out;
 }
 
@@ -245,8 +244,9 @@ html {
 
 .selected__option {
   background-color: rgba(92, 89, 89, 0.24);
+  font-size: 1.7rem;
+  border-radius: 10%;
 }
-
 /* #endregion Sidebar */
 
 /* #region Suggestions */

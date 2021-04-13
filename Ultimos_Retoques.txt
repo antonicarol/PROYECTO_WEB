@@ -6,13 +6,13 @@
 
 6- Login / Register hacer mas ancho, y mejorar los imputs. Mejorar el pajaro hacerlo mas bonito. Typografia
 
-7- Mas espacio en los imputs del login y Register
+7- Mas espacio en los imputs del login y Register---- DONE
 
 
 8- En el Enter a text....   Poner la imagen del pajaro rojo en el imput.
 
 
-9- Cuando marcas el home o perfil en el side bar que aparezca mas grande el texto y la imagen, tambien mirar como quedaria el sombreado circular.
+9- Cuando marcas el home o perfil en el side bar que aparezca mas grande el texto y la imagen, tambien mirar como quedaria el sombreado circular.--DONE
 
 
 10- Limit de caracteres en el post y en los imputs
