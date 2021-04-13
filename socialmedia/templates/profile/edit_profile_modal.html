@@ -26,26 +26,26 @@
           <div class="edit__profile__basics">
             <div class="input__container">
               <label for="first_name">Nombre</label>
-              {% if userProfile.first_name is None %}
-              <input name="first_name" />
+              {% if userProfile.firstname is None %}
+              <input maxlength="20" name="first_name" />
               {% else %}
-              <input name="first_name" value="{{userProfile.first_name}}" />
+              <input maxlength="20" name="first_name" value="{{userProfile.firstname}}" />
               {% endif %}
             </div>
             <div class="input__container">
               <label for="last_name">Apellido</label>
-              {% if userProfile.last_name is None %}
-              <input name="last_name" />
+              {% if userProfile.lastname is None %}
+              <input maxlength="20" name="last_name" />
               {% else %}
-              <input name="last_name" value="{{userProfile.last_name}}" />
+              <input maxlength="20" name="last_name" value="{{userProfile.lastname}}" />
               {% endif %}
             </div>
             <div class="input__container">
               <label for="email">Email</label>
               {% if userProfile.email is None %}
-              <input type="email" name="email" />
+              <input maxlength="30" type="email" name="email" />
               {% else %}
-              <input type="email" name="email" value="{{userProfile.email}}" />
+              <input maxlength="30" type="email" name="email" value="{{userProfile.email}}" />
               {% endif %}
             </div>
           </div>

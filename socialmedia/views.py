@@ -84,7 +84,7 @@ def home(request):
 
         newPostForm = NewPostForm()
 
-        # Update las login user)
+        # Update las login user
         userProfile = UserProfile.objects.get(user=user)
 
         userImage = Image.objects.get(userProfile=userProfile)
@@ -111,24 +111,28 @@ def home(request):
 @login_required
 def edit_profile(request):
     if request.user.is_authenticated:
-        print(request.POST)
         user = request.user
         if request.method == 'POST':
             first_name = request.POST["first_name"]
             last_name = request.POST["last_name"]
             email = request.POST["email"]
-            print(request.FILES["profileImage"])
-            image = request.FILES["profileImage"]
+            image = ""
+            if "profileImage" in request.FILES:
+                image = request.FILES["profileImage"]
 
-            userProfile = UserProfile.objects.get(user=user)
+                userProfile = UserProfile.objects.get(user=user)
 
-            # Delete previous image
-            Image.objects.get(title=user.username).delete()
+                Image.objects.get(title=user.username).delete()
 
-            Image.objects.create(title=user.username,
-                                 userProfile=userProfile, image=image)
-            UserProfile.objects.filter(user=user).update(
-                email=email, firstname=first_name, lastname=first_name, firstTime=True)
+                Image.objects.create(title=user.username,
+                                     userProfile=userProfile, image=image)
+
+                UserProfile.objects.filter(user=user).update(
+                    email=email, firstname=first_name, lastname=last_name, firstTime=True)
+
+            else:
+                UserProfile.objects.filter(user=user).update(
+                    email=email, firstname=first_name, lastname=last_name, firstTime=True)
 
             return redirect('profile', user.username)
 
@@ -161,10 +165,12 @@ def userProfile(request, user):
         else:
             canFollow = 1
 
+        loggedUserProfile = UserProfile.objects.get(user=request.user)
+        loggedUserImage = Image.objects.get(userProfile=loggedUserProfile)
         userImage = Image.objects.get(userProfile=userProfile)
 
         isFirstTime = False
-        if(not userProfile.firstname):
+        if(not userProfile.firstTime):
             isFirstTime = True
 
         lastLogin = getLastLogin(userProfile)
@@ -179,7 +185,7 @@ def userProfile(request, user):
             'lastLogin': lastLogin,
             'userImage': userImage,
             'isFirstTime': isFirstTime,
-            'loggedUserImage': userImage
+            'loggedUserImage': loggedUserImage
         }
         return render(request, 'profile/userProfile.html', context)
     else:
