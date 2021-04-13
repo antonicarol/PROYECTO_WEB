@@ -2,6 +2,4 @@
 
 6- Login / Register hacer mas ancho, y mejorar los imputs. Mejorar el pajaro hacerlo mas bonito. Typografia
 
-9- Acabar de tocar els inputs  EDITAR PERFIL / LOGIN / REGISTER
-
 11- Estructura de les teemplates (El toni fuma hardala)
