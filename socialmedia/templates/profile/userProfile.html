@@ -34,7 +34,9 @@
             {% if isFollowingProfile %}
             <form method="POST" action="{% url 'followUser' %}">
                   {% csrf_token %}
-                  {{ followUserForm }}
+                  <input type="hidden" name="username" value="{{userProfile.profileUsername}}" />
+                  <input type="hidden" name="action" value="0" />
+                  <input type="hidden" name="origin" value="profile" />
                 <button type="submit" class="btn red large">
                   <span>Dejar de Seguir</span>
                 </button>
@@ -42,7 +44,9 @@
             {% else %}
                  <form method="POST" action="{% url 'followUser' %}">
                   {% csrf_token %}
-                  {{ followUserForm }}
+                  <input type="hidden" name="username" value="{{userProfile.profileUsername}}" />
+                  <input type="hidden" name="action" value="1" />
+                  <input type="hidden" name="origin" value="profile" />
                 <button class="btn blue large">
                   <span>Seguir</span>
                 </button>
