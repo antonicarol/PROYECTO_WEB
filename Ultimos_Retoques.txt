@@ -1,3 +1,6 @@
+1- Imagen de sidebar cambia cuando entramos perfil no nuestro
+
+
 2- Los apellidos aparecen mal 
 
 3- Todo el editar perfil se teiene que modificar y puede imagen de fondo diferente 
@@ -6,16 +9,17 @@
 
 6- Login / Register hacer mas ancho, y mejorar los imputs. Mejorar el pajaro hacerlo mas bonito. Typografia
 
-7- Mas espacio en los imputs del login y Register---- DONE
 
+8- afegir iconos als diferents botons
 
-8- En el Enter a text....   Poner la imagen del pajaro rojo en el imput.
-
-
-9- Cuando marcas el home o perfil en el side bar que aparezca mas grande el texto y la imagen, tambien mirar como quedaria el sombreado circular.--DONE
-
+9- Acabar de tocar els inputs  EDITAR PERFIL / LOGIN / REGISTER
 
 10- Limit de caracteres en el post y en los imputs
 
 11- Estructura de les teemplates (El toni fuma hardala)
 
+
+
+12- Si no es selecciona imatge, dona error --> EDITAR PERFIL
+
+13- No es posa el valor del firstname lastname
