@@ -1,17 +1,7 @@
-3- Todo el editar perfil se teiene que modificar y puede imagen de fondo diferente 
-
-4- Mejorar los botones
-
-8- afegir iconos als diferents botons
+4- Mejorar los botones afegir iconos als diferents botons
 
 6- Login / Register hacer mas ancho, y mejorar los imputs. Mejorar el pajaro hacerlo mas bonito. Typografia
 
-
-
-
 9- Acabar de tocar els inputs  EDITAR PERFIL / LOGIN / REGISTER
 
-10- Limit de caracteres en el post y en los imputs
-
 11- Estructura de les teemplates (El toni fuma hardala)
-
