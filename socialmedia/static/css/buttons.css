@@ -8,6 +8,7 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   background-color: rgb(182, 177, 177);
   transition: background-color 0.3s;
+  border: 2px solid rgb(65, 64, 64)
 }
 
 .btn:hover,
@@ -17,22 +18,21 @@
 
 .btn.small span {
   display: inline;
-  padding: 12px 24px;
-  
+  padding: 12px;
 }
 .btn.medium span {
   display: block;
-  padding: 12px 24px;
+  padding: 5px;
 }
 
 .btn.large span {
-  display: block;
-  padding: 16px 32px;
+  display: inline-block;
+  padding: 5px;
   font-size: large;
 }
 
 .btn.orange {
-  background-color: #e67e22;
+  background-color: #faaf6d;
 }
 
 .btn.orange:hover,
@@ -90,5 +90,25 @@
 
 .btn.large svg{
   object-fit: contain;
-  font-size:40px;
+  font-size: 40px;
+  width: 125px;
+}
+
+.btn.small .btn_text{
+  text-align: center;
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.btn.medium .btn_text{
+  text-align: center;
+  font-size: 20px;
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.btn.large .btn_text{
+  text-align: center;
+  font-size: 20px;
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
