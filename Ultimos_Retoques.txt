@@ -1,2 +1,5 @@
 
 11- Estructura de les teemplates (El toni fuma hardala)
+
+No funciona el botó delete follower en el perfil
+->> Mirar la template o la vista

@@ -265,10 +265,11 @@ def follow_user(request):
                         profileUsername=loggedUser.username)
 
                     follower = User.objects.get(username=username)
+
                     if action == 0:
                         # Unfollow
                         Follow.objects.filter(
-                            follower=loggedUser, to=loggedUserProfile).delete()
+                            follower=follower, to=loggedUserProfile).delete()
                         return redirect('profile', loggedUser.username)
                 elif origin == "home":
                     loggedUser = request.user
