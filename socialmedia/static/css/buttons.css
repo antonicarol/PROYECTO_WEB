@@ -46,7 +46,7 @@
 }
 
 .btn.large span {
-  display: inline-block;
+  display: inline;
   padding: 5px;
   font-size: large;
 }
